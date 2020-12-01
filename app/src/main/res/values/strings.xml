@@ -6,4 +6,5 @@
     values-round/strings.xml for round devices.
     -->
     <string name="hello_world">Hello World!</string>
+    <string name="description">Фон splashscreen</string>
 </resources>

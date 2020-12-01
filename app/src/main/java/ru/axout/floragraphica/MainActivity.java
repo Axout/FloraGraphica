@@ -6,9 +6,12 @@ import android.os.Handler;
 import android.view.Window;
 import android.os.Bundle;
 
+/* MainActivity
+Служит для отображения заставки
+ */
 public class MainActivity extends Activity {
 
-    private final int SPLASH_DELAY = 2000;
+    private final int SPLASH_DELAY = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +20,8 @@ public class MainActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.splash);
 
+        // Handler позволяет реализовать отложенный по времени код
+        // Runnable - запускает новый поток. Метод finish() закрывает этот поток.
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
