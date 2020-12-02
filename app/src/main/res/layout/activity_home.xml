@@ -1,22 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity"
+    android:orientation="vertical"
+    android:background="@color/colorPrimaryDark">
+
+    <ImageView
+        android:id="@+id/im_Tula"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".HomeActivity">
+        android:src="@drawable/tula_1"
+        android:padding="8dp"
+        android:layout_weight="1"
+        android:layout_margin="8dp"
+        android:scaleType="centerCrop">
+    </ImageView>
 
-    <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="12dp">
+    <ImageView
+        android:id="@+id/im_Food"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/foodcity_1"
+        android:padding="8dp"
+        android:layout_weight="1"
+        android:layout_margin="8dp"
+        android:scaleType="centerCrop">
+    </ImageView>
 
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hello_world"
-            android:layout_gravity="center"/>
+    <ImageView
+        android:id="@+id/im_Varsh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/varshavka_1"
+        android:padding="8dp"
+        android:layout_weight="1"
+        android:layout_margin="8dp"
+        android:scaleType="centerCrop">
+    </ImageView>
 
-    </FrameLayout>
 </LinearLayout>

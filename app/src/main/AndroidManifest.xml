@@ -9,16 +9,34 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <activity
             android:name=".HomeActivity"
-            android:label="HomeActivity">
+            android:label="Площадки"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".TulaActivity"
+            android:label="Тула">
+        </activity>
+
+        <activity
+                android:name=".FoodActivity"
+                android:label="Фудсити">
+        </activity>
+
+        <activity
+                android:name=".VarshActivity"
+                android:label="Варшавка">
         </activity>
     </application>
 
