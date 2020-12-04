@@ -38,6 +38,11 @@
                 android:name=".VarshActivity"
                 android:label="Варшавка">
         </activity>
+
+        <activity
+                android:name=".AddDataActivity"
+                android:label="Добавьте новые сорта">
+        </activity>
     </application>
 
 </manifest>

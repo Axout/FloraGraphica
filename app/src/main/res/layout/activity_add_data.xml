@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- LinearLayout выравнивает все дочерние объекты в одном направлении — вертикально или горизонтально -->
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".MainActivity">
+
+    <!-- Код (ID) -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <TextView
+                android:text="Код"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewID"
+                android:textColor="@color/colorPrimaryDark"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:textSize="20dp"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextID"
+                android:padding="10dp"
+                android:layout_weight="1"
+                android:background="@android:drawable/editbox_background"
+                android:hint="Введите код"/>
+    </LinearLayout>
+
+    <!-- Тип -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+        <TextView
+                android:text="Тип"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewType"
+                android:textColor="@color/colorPrimaryDark"
+                android:padding="5dp"
+                android:layout_weight="2"
+                android:textSize="20dp"/>
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spTypes"
+                android:spinnerMode="dialog"
+                android:padding="20dp"
+                android:layout_weight="1"/>
+    </LinearLayout>
+
+    <!-- Цвет -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+        <TextView
+                android:text="Цвет"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewColor"
+                android:textColor="@color/colorPrimaryDark"
+                android:padding="5dp"
+                android:layout_weight="2"
+                android:textSize="20dp"/>
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spColors"
+                android:spinnerMode="dialog"
+                android:padding="20dp"
+                android:layout_weight="1"/>
+    </LinearLayout>
+
+    <!-- Сорт -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+        <TextView
+                android:text="Сорт"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewSort"
+                android:textColor="@color/colorPrimaryDark"
+                android:padding="5dp"
+                android:layout_weight="2"
+                android:textSize="20dp"/>
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spSorts"
+                android:spinnerMode="dialog"
+                android:padding="20dp"
+                android:layout_weight="1"/>
+    </LinearLayout>
+
+    <!-- Макет кнопок ADD и RESET -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/bt_add"
+                android:text="Добавить"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/bt_reset"
+                android:text="Удалить всё"/>
+
+    </LinearLayout>
+
+    <!-- RecyclerView предназначен для оптимизации работы со списками -->
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recycler_view"
+            android:layout_marginTop="8dp"
+            tools:listitem="@layout/list_row_main"/>
+    <!-- В "list_row_main" прописываем элемент списка -->
+
+</LinearLayout>
