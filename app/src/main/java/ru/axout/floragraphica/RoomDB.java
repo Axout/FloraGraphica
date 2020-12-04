@@ -6,7 +6,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 // Добавляю объекты БД
-@Database(entities = {MainData.class},version = 1,exportSchema = false)
+@Database(entities = {MainData.class, TulaData.class},version = 1,exportSchema = false)
 public abstract class RoomDB extends RoomDatabase {
     // Создаю экземпляр БД
     private static RoomDB database;
@@ -27,5 +27,6 @@ public abstract class RoomDB extends RoomDatabase {
 
     //
     public abstract MainDao mainDao();
+    public abstract TulaDao tulaDao();
 }
 

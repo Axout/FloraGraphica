@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp"
+    tools:context=".TulaActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- RecyclerView предназначен для оптимизации работы со списками -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recycler_view_tula"
+        android:layout_marginTop="8dp"
+        tools:listitem="@layout/list_row_tula"/>
+    <!-- В "list_row_main" прописываем элемент списка -->
+
+</LinearLayout>
