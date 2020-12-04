@@ -99,7 +99,8 @@ public class TulaActivity extends AppCompatActivity {
                 Toast.makeText(TulaActivity.this, "Ещё не работает", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.action_add_scan:
-                Toast.makeText(TulaActivity.this, "Ещё не работает", Toast.LENGTH_SHORT).show();
+                Intent intent2 = new Intent(TulaActivity.this, AddTulaScanActivity.class);
+                startActivity(intent2);
                 break;
             case R.id.action_send_scan:
                 Toast.makeText(TulaActivity.this, "Ещё не работает", Toast.LENGTH_SHORT).show();
