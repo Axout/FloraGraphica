@@ -44,6 +44,12 @@
                 android:label="Добавьте новые сорта"
                 android:screenOrientation="portrait">
         </activity>
+
+        <activity
+                android:name=".AddTulaManuallyActivity"
+                android:label="Добавление в Туле"
+                android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

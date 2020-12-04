@@ -1,9 +1,14 @@
 package ru.axout.floragraphica;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -67,5 +72,43 @@ public class TulaActivity extends AppCompatActivity {
 //        dataList.addAll(database.mainDao().getAll());
 //        // Уведомление после вставки данных (Notify when data is inserted)
 //        adapter.notifyDataSetChanged();
+    }
+
+    // Создание меню экшн бара
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Наполнение меню. Добавление элементов в акшн бар (Inflate the menu. This adds items to the action bar if it is present.)
+        getMenuInflater().inflate(R.menu.menu_tula, menu);
+        return true;
+    }
+
+    // Обработка выпадающего меню в экшн баре
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        // Обработка нажатия кнопок выпадающего меню
+        switch (id) {
+            case R.id.action_add_manually:
+                Intent intent = new Intent(TulaActivity.this, AddTulaManuallyActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.action_send_manually:
+                Toast.makeText(TulaActivity.this, "Ещё не работает", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_delete_manually:
+                Toast.makeText(TulaActivity.this, "Ещё не работает", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_add_scan:
+                Toast.makeText(TulaActivity.this, "Ещё не работает", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_send_scan:
+                Toast.makeText(TulaActivity.this, "Ещё не работает", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_delete_scan:
+                Toast.makeText(TulaActivity.this, "Задолбал! Только первая кнопка работает!!!", Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

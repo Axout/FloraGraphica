@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      tools:context=".TulaActivity">
+    <item
+            android:id="@+id/action_add_manually"
+            android:orderInCategory="100"
+            android:title="Добавить вручную"
+            app:showAsAction="never"/>
+    <item
+            android:id="@+id/action_send_manually"
+            android:orderInCategory="100"
+            android:title="Отправить вручную"
+            app:showAsAction="never"/>
+    <item
+            android:id="@+id/action_delete_manually"
+            android:orderInCategory="100"
+            android:title="Удалить вручную"
+            app:showAsAction="never"/>
+    <item
+            android:id="@+id/action_add_scan"
+            android:orderInCategory="100"
+            android:title="Добавить сканером"
+            app:showAsAction="never"/>
+    <item
+            android:id="@+id/action_send_scan"
+            android:orderInCategory="100"
+            android:title="Отправить сканером"
+            app:showAsAction="never"/>
+    <item
+            android:id="@+id/action_delete_scan"
+            android:orderInCategory="100"
+            android:title="Удалить сканером"
+            app:showAsAction="never"/>
+</menu>
