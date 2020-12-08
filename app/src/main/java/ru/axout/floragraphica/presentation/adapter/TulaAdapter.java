@@ -1,13 +1,15 @@
-package ru.axout.floragraphica;
+package ru.axout.floragraphica.presentation.adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import ru.axout.floragraphica.R;
+import ru.axout.floragraphica.data.RoomDB;
+import ru.axout.floragraphica.data.TulaData;
 
 import java.util.List;
 

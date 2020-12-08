@@ -1,4 +1,4 @@
-package ru.axout.floragraphica;
+package ru.axout.floragraphica.presentation.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import ru.axout.floragraphica.R;
 
 public class HomeActivity extends AppCompatActivity {
 

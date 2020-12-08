@@ -1,4 +1,4 @@
-package ru.axout.floragraphica;
+package ru.axout.floragraphica.presentation.activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +9,10 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import ru.axout.floragraphica.data.MainData;
+import ru.axout.floragraphica.R;
+import ru.axout.floragraphica.data.RoomDB;
+import ru.axout.floragraphica.presentation.adapter.MainAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

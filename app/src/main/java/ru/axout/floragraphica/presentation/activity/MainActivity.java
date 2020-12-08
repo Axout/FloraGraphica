@@ -1,10 +1,11 @@
-package ru.axout.floragraphica;
+package ru.axout.floragraphica.presentation.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.view.Window;
 import android.os.Bundle;
+import ru.axout.floragraphica.R;
 
 /* MainActivity
 Служит для отображения заставки

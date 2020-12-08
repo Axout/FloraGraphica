@@ -1,4 +1,4 @@
-package ru.axout.floragraphica;
+package ru.axout.floragraphica.presentation.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import ru.axout.floragraphica.data.CaptureAct;
+import ru.axout.floragraphica.R;
 
 public class AddTulaScanActivity extends AppCompatActivity implements View.OnClickListener{
 

@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.activity.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -19,46 +19,46 @@
         </activity>
 
         <activity
-            android:name=".HomeActivity"
+            android:name=".presentation.activity.HomeActivity"
             android:label="Площадки"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".TulaActivity"
+            android:name=".presentation.activity.TulaActivity"
             android:label="Тула">
         </activity>
 
         <activity
-                android:name=".FoodActivity"
+                android:name=".presentation.activity.FoodActivity"
                 android:label="Фудсити">
         </activity>
 
         <activity
-                android:name=".VarshActivity"
+                android:name=".presentation.activity.VarshActivity"
                 android:label="Варшавка">
         </activity>
 
         <activity
-                android:name=".AddDataActivity"
+                android:name=".presentation.activity.AddDataActivity"
                 android:label="Добавьте новые сорта"
                 android:screenOrientation="portrait">
         </activity>
 
         <activity
-                android:name=".AddTulaManuallyActivity"
+                android:name=".presentation.activity.AddTulaManuallyActivity"
                 android:label="Добавление в Туле"
                 android:screenOrientation="portrait">
         </activity>
 
         <activity
-                android:name=".AddTulaScanActivity"
+                android:name=".presentation.activity.AddTulaScanActivity"
                 android:label="Добавление в Туле"
                 android:screenOrientation="portrait">
         </activity>
 
         <activity
-                android:name=".CaptureAct"
+                android:name=".data.CaptureAct"
                 android:screenOrientation="fullSensor"
                 android:stateNotNeeded="true"
                 android:windowSoftInputMode="stateAlwaysHidden">

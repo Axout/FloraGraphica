@@ -1,4 +1,4 @@
-package ru.axout.floragraphica;
+package ru.axout.floragraphica.data;
 
 import android.content.Context;
 import androidx.room.Database;

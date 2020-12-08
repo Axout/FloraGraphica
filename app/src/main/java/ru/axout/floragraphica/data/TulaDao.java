@@ -1,4 +1,4 @@
-package ru.axout.floragraphica;
+package ru.axout.floragraphica.data;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -10,24 +10,20 @@ import java.util.List;
 import static androidx.room.OnConflictStrategy.REPLACE;
 
 @Dao
-public interface MainDao {
+public interface TulaDao {
     // Вставка запроса
     @Insert(onConflict = REPLACE)
-    void insert(MainData mainData);
+    void insert(TulaData tulaData);
 
     // Удаление запроса
     @Delete
-    void delete(MainData mainData);
-
-    // Удаление всех запросов
-    @Delete
-    void reset(List<MainData> mainData);
+    void delete(TulaData tulaData);
 
 //    // Обновление запросов
-//    @Query("UPDATE table_Assortment SET quantity = :sQuantity WHERE ID = :sID")
+//    @Query("UPDATE table_tula SET quantity = :sQuantity WHERE ID = :sID")
 //    void update(int sID, String sQuantity);
 
     // Выдача всех запросов
-    @Query("SELECT * FROM table_Assortment")
-    List<MainData> getAll();
+    @Query("SELECT * FROM table_tula")
+    List<TulaData> getAll();
 }
