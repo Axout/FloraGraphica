@@ -10,7 +10,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import ru.axout.floragraphica.data.CaptureAct;
+import ru.axout.floragraphica.CaptureAct;
 import ru.axout.floragraphica.R;
 
 public class AddTulaScanActivity extends AppCompatActivity implements View.OnClickListener{

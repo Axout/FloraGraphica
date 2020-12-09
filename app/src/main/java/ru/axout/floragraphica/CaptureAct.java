@@ -1,4 +1,4 @@
-package ru.axout.floragraphica.data;
+package ru.axout.floragraphica;
 
 public class CaptureAct extends com.journeyapps.barcodescanner.CaptureActivity {
 }

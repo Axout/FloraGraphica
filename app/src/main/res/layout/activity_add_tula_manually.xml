@@ -1,8 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+
+<!-- LinearLayout выравнивает все дочерние объекты в одном направлении — вертикально или горизонтально -->
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
         tools:context=".presentation.activity.AddTulaManuallyActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Код сорта (ID) -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <TextView
+                android:text="Код сорта:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:textSize="20dp"/>
+
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spID"
+                android:spinnerMode="dialog"
+                android:padding="20dp"
+                android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <!-- Количество -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+        <TextView
+                android:text="Количество:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewType"
+                android:textColor="@color/colorPrimaryDark"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:textSize="20dp"/>
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextQuantity"
+                android:padding="10dp"
+                android:layout_weight="1"
+                android:background="@android:drawable/editbox_background"
+                android:hint="Введите кол-во"
+                android:inputType="number"/>
+
+    </LinearLayout>
+
+    <!-- Макет кнопок ADD и RESET -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/bt_addTula"
+                android:text="Добавить"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/bt_resetTula"
+                android:text="Удалить всё"
+                android:enabled="false"/>
+
+    </LinearLayout>
+
+    <!-- RecyclerView предназначен для оптимизации работы со списками -->
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recycler_view_tula"
+            android:layout_marginTop="8dp"
+            tools:listitem="@layout/list_row_main"/>
+    <!-- В "list_row_main" прописываем элемент списка -->
+
+</LinearLayout>

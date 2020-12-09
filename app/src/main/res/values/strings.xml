@@ -8,4 +8,50 @@
     <string name="hello_world">Hello World!</string>
     <string name="description">Фон splashscreen</string>
     <string name="action_settings">Добавить сорт</string>
+
+    <string-array name="types">
+        <item>Обычные</item>
+        <item>Пёстрые</item>
+        <item>Махровые</item>
+        <item>Бахромчатые</item>
+        <item>Попугайные</item>
+    </string-array>
+
+    <string-array name="colors">
+        <item>Белый</item>
+        <item>Кремовый</item>
+        <item>Жёлтый</item>
+        <item>Бордо</item>
+        <item>Красный</item>
+        <item>Светло-розовый</item>
+        <item>Розовый</item>
+        <item>Оранжевый</item>
+        <item>Лилак</item>
+        <item>Фиолетовый</item>
+        <item>Красно-жёлтый</item>
+        <item>Розово-белый</item>
+        <item>Красно-белый</item>
+        <item>Лилово-белый</item>
+        <item>Тёмно-пурпурный</item>
+    </string-array>
+
+    <string-array name="sorts">
+        <item>Darwisnow</item>
+        <item>Cream Fraiche</item>
+        <item>Coalition</item>
+        <item>Lalibela</item>
+        <item>Red Lable</item>
+        <item>Super Model</item>
+        <item>Barcelona Beauty</item>
+        <item>Orange Ninja</item>
+        <item>Barcelona</item>
+        <item>Bullit</item>
+        <item>Verandy</item>
+        <item>Milkshake</item>
+        <item>Roman Empire</item>
+        <item>Synaeda Blue</item>
+        <item>Double Twist</item>
+        <item>Queensland</item>
+        <item>Parrot Sweet</item>
+    </string-array>
 </resources>
