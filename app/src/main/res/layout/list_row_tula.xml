@@ -15,45 +15,46 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:id="@+id/text_view_id"
+                android:id="@+id/tv_id_tula"
                 android:textSize="14sp"/>
 
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
-                android:id="@+id/text_view_sort"
+                android:id="@+id/tv_sort_tula"
                 android:textSize="14sp"/>
 
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:id="@+id/text_view_color"
+                android:id="@+id/tv_color_tula"
                 android:textSize="14sp"/>
 
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:id="@+id/text_view_type"
+                android:id="@+id/tv_type_tula"
                 android:textSize="14sp"/>
 
+        <!--
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/text_view_quantity"
                 android:textSize="14sp"/>
+        -->
 
-        <!--
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/bt_delete"
                 android:layout_marginStart="8dp"
                 android:src="@drawable/ic_delete"/>
-        -->
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
