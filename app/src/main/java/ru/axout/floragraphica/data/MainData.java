@@ -6,7 +6,9 @@ import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
-// Присваиваем таблице имя
+/*
+Аннотацией Entity помечаем объект (таблицу), который хранится в БД
+ */
 @Entity(tableName = "table_Assortment")
 public class MainData implements Serializable {
     // Создание первичного ключа, автоматическое

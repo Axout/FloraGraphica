@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import ru.axout.floragraphica.R;
+import ru.axout.floragraphica.data.MainData;
 import ru.axout.floragraphica.data.RoomDB;
 import ru.axout.floragraphica.data.TulaData;
 import ru.axout.floragraphica.presentation.adapter.TulaAdapter;
@@ -40,19 +41,25 @@ public class AddTulaManuallyActivity extends AppCompatActivity {
         btReset = findViewById(R.id.bt_resetTula);
         recyclerView = findViewById(R.id.recycler_view_tula);
 
-        Integer[] arrayID = {1,2,3,4,5,7};
+        // Initialize BD
+        database = RoomDB.getInstance(this);
+
+        // Считаем из БД список кодов сортов
+        List<MainData> mainDataList = database.mainDao().getAll();
+        List<Integer> listID = new ArrayList<>();
+        for (MainData id : mainDataList) {
+            listID.add(id.getID());
+        }
 
         final Spinner spID = findViewById(R.id.spID);
 
         // Выпадающий список "Код сорта тюльпана"
         ArrayAdapter<Integer> idAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, arrayID);
+                android.R.layout.simple_spinner_item, listID);
         idAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spID.setAdapter(idAdapter);
         spID.setPrompt("Код сорта тюльпана");
 
-        // Initialize BD
-        database = RoomDB.getInstance(this);
         // Хранение данных БД в data list (Store database value in data list)
         tulaDataList = database.tulaDao().getAll();
 
@@ -64,5 +71,6 @@ public class AddTulaManuallyActivity extends AppCompatActivity {
         tulaAdapter = new TulaAdapter(AddTulaManuallyActivity.this, tulaDataList);
         // Set adapter
         recyclerView.setAdapter(tulaAdapter);
+
     }
 }

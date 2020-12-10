@@ -9,6 +9,10 @@ import java.util.List;
 
 import static androidx.room.OnConflictStrategy.REPLACE;
 
+/*
+Data Access Object
+Здесь описаны методы для работы с БД
+ */
 @Dao
 public interface MainDao {
     // Вставка запроса
@@ -30,4 +34,7 @@ public interface MainDao {
     // Выдача всех запросов
     @Query("SELECT * FROM table_Assortment")
     List<MainData> getAll();
+
+//    @Query("SELECT ID FROM table_Assortment")
+//    List<MainData> getID();
 }
