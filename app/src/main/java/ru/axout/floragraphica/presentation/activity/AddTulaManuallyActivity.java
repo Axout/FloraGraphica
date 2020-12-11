@@ -45,20 +45,10 @@ public class AddTulaManuallyActivity extends AppCompatActivity {
         database = RoomDB.getInstance(this);
 
         // Считаем из БД список кодов сортов
-        List<MainData> mainDataList = database.mainDao().getAll();
-        List<Integer> listID = new ArrayList<>();
-        for (MainData id : mainDataList) {
-            listID.add(id.getID());
-        }
+        List<Integer> listID = getListID();
 
-        final Spinner spID = findViewById(R.id.spID);
-
-        // Выпадающий список "Код сорта тюльпана"
-        ArrayAdapter<Integer> idAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, listID);
-        idAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spID.setAdapter(idAdapter);
-        spID.setPrompt("Код сорта тюльпана");
+        // Создание выпадающего списка "Код сорта тюльпана"
+        createSpinner(listID);
 
         // Хранение данных БД в data list (Store database value in data list)
         tulaDataList = database.tulaDao().getAll();
@@ -72,5 +62,25 @@ public class AddTulaManuallyActivity extends AppCompatActivity {
         // Set adapter
         recyclerView.setAdapter(tulaAdapter);
 
+    }
+
+    // Считаем из БД список кодов сортов
+    private List<Integer> getListID() {
+        List<MainData> mainDataList = database.mainDao().getAll();
+        List<Integer> listID = new ArrayList<>();
+        for (MainData id : mainDataList) {
+            listID.add(id.getID());
+        }
+        return listID;
+    }
+
+    // Создание выпадающего списка "Код сорта тюльпана"
+    private void createSpinner(List<Integer> listID) {
+        final Spinner spID = findViewById(R.id.spID);
+        ArrayAdapter<Integer> idAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, listID);
+        idAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spID.setAdapter(idAdapter);
+        spID.setPrompt("Код сорта тюльпана");
     }
 }
