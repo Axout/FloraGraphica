@@ -1,10 +1,8 @@
 package ru.axout.floragraphica.presentation.activity;
 
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
+import android.view.View;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,11 +17,6 @@ import java.util.List;
 
 public class AddTulaManuallyActivity extends AppCompatActivity {
 
-    Spinner spinnerID;
-    EditText editTextQuantity;
-    Button btAdd, btReset;
-    RecyclerView recyclerView;
-
     List<TulaData> tulaDataList = new ArrayList<>();
     LinearLayoutManager linearLayoutManager;
     RoomDB database;
@@ -35,11 +28,11 @@ public class AddTulaManuallyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_tula_manually);
 
         // Присваивание переменным (Assign variables)
-        spinnerID = findViewById(R.id.spID);
-        editTextQuantity = findViewById(R.id.editTextQuantity);
-        btAdd = findViewById(R.id.bt_addTula);
-        btReset = findViewById(R.id.bt_resetTula);
-        recyclerView = findViewById(R.id.recycler_view_tula);
+        final Spinner spinnerID = findViewById(R.id.spID);
+        final EditText editTextQuantity = findViewById(R.id.editTextQuantity);
+        Button btAdd = findViewById(R.id.bt_addTula);
+        Button btReset = findViewById(R.id.bt_resetTula);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view_tula);
 
         // Initialize BD
         database = RoomDB.getInstance(this);
@@ -61,6 +54,42 @@ public class AddTulaManuallyActivity extends AppCompatActivity {
         tulaAdapter = new TulaAdapter(AddTulaManuallyActivity.this, tulaDataList);
         // Set adapter
         recyclerView.setAdapter(tulaAdapter);
+
+        btAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Получение данных из выпадающего списка (spinner)
+                int idFromSpinner = Integer.parseInt(spinnerID.getSelectedItem().toString());
+                // Получение строки из table_main по ID
+                MainData mainData = database.mainDao().getWhereID(idFromSpinner);
+                // Получение данных (количество тюльпанов) из editText
+                String sQuantity = editTextQuantity.getText().toString().trim();
+
+                // Запись данных в table_tula
+                // Проверка пустой строки
+                if (!sQuantity.equals("")) { // Если строка не пустая
+                    // Initialize  tulaData
+                    TulaData tulaData = new TulaData();
+                    // Передача данных в tulaData
+                    tulaData.setTulip_ID(mainData.getID());
+                    tulaData.setType(mainData.getType());
+                    tulaData.setColor(mainData.getColor());
+                    tulaData.setSort(mainData.getSort());
+                    tulaData.setQuantity(Integer.parseInt(sQuantity));
+                    // Вставка данных (картежа) в БД (Insert text in database)
+                    database.tulaDao().insert(tulaData);
+                    // Очитка edittext
+                    editTextQuantity.setText("");
+//                    // Очистка списка данных
+//                    dataList.clear();
+//                    // Заново данные из БД добавлются в список
+//                    dataList.addAll(database.mainDao().getAll());
+//                    // Уведомление после вставки данных (Notify when data is inserted)
+//                    adapter.notifyDataSetChanged();
+                    Toast.makeText(AddTulaManuallyActivity.this, "Добавлено", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
     }
 
