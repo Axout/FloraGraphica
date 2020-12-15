@@ -38,6 +38,9 @@ public interface MainDao {
     @Query("SELECT * FROM table_main WHERE ID = :id")
     MainData getWhereID(int id);
 
+    @Query("SELECT * FROM table_main WHERE sort = :sort")
+    MainData getWhereSort(String sort);
+
 //    @Query("SELECT * FROM table_main WHERE ID IN (:listID)")
 //    List<MainData> getWhereID(List<Integer> listID);
 }

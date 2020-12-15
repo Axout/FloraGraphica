@@ -9,10 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import ru.axout.floragraphica.R;
-import ru.axout.floragraphica.data.MainData;
 import ru.axout.floragraphica.data.RoomDB;
 import ru.axout.floragraphica.data.TulaData;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class TulaAdapter extends RecyclerView.Adapter<TulaAdapter.ViewHolder> {
@@ -45,10 +46,10 @@ public class TulaAdapter extends RecyclerView.Adapter<TulaAdapter.ViewHolder> {
         database = RoomDB.getInstance(context);
 
         // Вывод данных пользователю
-        holder.textViewID.setText(Integer.toString(data.getTulip_ID()));
-        holder.textViewSort.setText(data.getSort());
-        holder.textViewColor.setText(data.getColor());
-        holder.textViewType.setText(data.getType());
+        holder.tvIDSort.setText(Integer.toString(data.getSort_ID()));
+        holder.tvPackNumber.setText(Integer.toString(data.getPackageNumber()));
+//        holder.tvDate.setText(dateFormat(data.getDateAdded()));
+        holder.tvDate.setText(data.getDateAdded());
 
         // Обработка нажатия кнопки удаления одного элемента БД
         holder.btDelete.setOnClickListener(new View.OnClickListener() {
@@ -73,15 +74,14 @@ public class TulaAdapter extends RecyclerView.Adapter<TulaAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewID, textViewSort, textViewColor, textViewType;
+        TextView tvIDSort, tvPackNumber, tvDate, textViewType;
         ImageView btDelete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewID = itemView.findViewById(R.id.tv_id_tula);
-            textViewSort = itemView.findViewById(R.id.tv_sort_tula);
-            textViewColor = itemView.findViewById(R.id.tv_color_tula);
-            textViewType = itemView.findViewById(R.id.tv_type_tula);
+            tvIDSort = itemView.findViewById(R.id.tv_id_sort_tula);
+            tvPackNumber = itemView.findViewById(R.id.tv_pack_number_tula);
+            tvDate = itemView.findViewById(R.id.tv_date_tula);
             btDelete = itemView.findViewById(R.id.bt_delete);
         }
     }
