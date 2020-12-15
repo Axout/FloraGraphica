@@ -76,11 +76,11 @@
 
     <!-- RecyclerView предназначен для оптимизации работы со списками -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_tula"
+        android:id="@+id/recycler_view_tula_manually"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="8dp"
-        tools:listitem="@layout/list_row_tula"/>
+        tools:listitem="@layout/list_row_tula_manually"/>
     <!-- В "list_row_main" прописываем элемент списка -->
 
 </LinearLayout>

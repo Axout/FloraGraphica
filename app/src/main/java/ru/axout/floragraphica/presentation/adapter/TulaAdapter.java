@@ -12,8 +12,6 @@ import ru.axout.floragraphica.R;
 import ru.axout.floragraphica.data.RoomDB;
 import ru.axout.floragraphica.data.TulaData;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class TulaAdapter extends RecyclerView.Adapter<TulaAdapter.ViewHolder> {
@@ -34,7 +32,7 @@ public class TulaAdapter extends RecyclerView.Adapter<TulaAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Initialize view
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_row_tula, parent,false);
+                .inflate(R.layout.list_row_tula_manually, parent,false);
         return new ViewHolder(view);
     }
 
@@ -48,7 +46,6 @@ public class TulaAdapter extends RecyclerView.Adapter<TulaAdapter.ViewHolder> {
         // Вывод данных пользователю
         holder.tvIDSort.setText(Integer.toString(data.getSort_ID()));
         holder.tvPackNumber.setText(Integer.toString(data.getPackageNumber()));
-//        holder.tvDate.setText(dateFormat(data.getDateAdded()));
         holder.tvDate.setText(data.getDateAdded());
 
         // Обработка нажатия кнопки удаления одного элемента БД
@@ -74,7 +71,7 @@ public class TulaAdapter extends RecyclerView.Adapter<TulaAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvIDSort, tvPackNumber, tvDate, textViewType;
+        TextView tvIDSort, tvPackNumber, tvDate;
         ImageView btDelete;
 
         public ViewHolder(@NonNull View itemView) {

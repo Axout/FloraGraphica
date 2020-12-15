@@ -36,20 +36,19 @@ public class AddTulaManuallyActivity extends AppCompatActivity {
         final Spinner spinnerSort = findViewById(R.id.spSorts_tula);
         final EditText etPackNumber = findViewById(R.id.etPackNumber_tula);
         Button btAdd = findViewById(R.id.bt_add_tula);
-        RecyclerView recyclerView = findViewById(R.id.recycler_view_tula);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view_tula_manually);
 
         // Initialize BD
         database = RoomDB.getInstance(this);
-
         // Считаем из БД список сортов тюльпанов
         List<String> listSorts = getListOfSorts();
-
         // Создание выпадающего списка "Код сорта тюльпана"
         createSpinner(listSorts);
 
+
+        // Вывод данных пользователю:
         // Хранение данных БД в data list (Store database value in data list)
         tulaDataList = database.tulaDao().getAll();
-
         // Инициализация менеджера линейного макета (Initialize linear layout manager)
         linearLayoutManager = new LinearLayoutManager(this);
         // Установка менеджера макета
@@ -59,6 +58,8 @@ public class AddTulaManuallyActivity extends AppCompatActivity {
         // Set adapter
         recyclerView.setAdapter(tulaAdapter);
 
+
+        // Обработка нажатия кнопки "Добавить"
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
