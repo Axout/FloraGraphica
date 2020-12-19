@@ -12,7 +12,6 @@ import ru.axout.floragraphica.data.MainData;
 import ru.axout.floragraphica.data.RoomDB;
 import ru.axout.floragraphica.data.TulaData;
 import ru.axout.floragraphica.presentation.adapter.TulaAdapter;
-import ru.axout.floragraphica.presentation.adapter.TulaRestAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -70,35 +69,40 @@ public class AddTulaManuallyActivity extends AppCompatActivity {
                 MainData mainData = database.mainDao().getWhereSort(sortFromSpinner);
                 // Получение данных (номер упаковки) из editText
                 String sPackNumber = etPackNumber.getText().toString().trim();
+                int packNumber = Integer.parseInt(sPackNumber);
 
-                // Запись данных в table_tula
-                // Проверка пустой строки
-                if (!sPackNumber.equals("")) { // Если строка не пустая
-                    // Initialize  tulaData
-                    TulaData tulaData = new TulaData();
-                    // Передача данных в tulaData
-                    tulaData.setSort_ID(mainData.getID());
-                    tulaData.setSort(mainData.getSort());
-                    tulaData.setPackageNumber(Integer.parseInt(sPackNumber));
-                    tulaData.setDateAdded(getFormatDate());
-                    // Вставка данных (картежа) в БД (Insert text in database)
-                    database.tulaDao().insert(tulaData);
-                    // Очитка edittext
-                    etPackNumber.setText("");
+                // Проверка
+                if (!database.tulaDao().checkBySortAndPackNumber(sortFromSpinner, packNumber)) {
+                    // Запись данных в table_tula
+                    // Проверка пустой строки
+                    if (!sPackNumber.equals("")) { // Если строка не пустая
+                        // Initialize  tulaData
+                        TulaData tulaData = new TulaData();
+                        // Передача данных в tulaData
+                        tulaData.setSort_ID(mainData.getID());
+                        tulaData.setSort(mainData.getSort());
+                        tulaData.setPackageNumber(Integer.parseInt(sPackNumber));
+                        tulaData.setDateAdded(getFormatDate());
+                        // Вставка данных (картежа) в БД (Insert text in database)
+                        database.tulaDao().insert(tulaData);
+                        // Очитка edittext
+                        etPackNumber.setText("");
 
 
-                    // Для мгновенного обновления списка добавленных позиций:
-                    // Очистка списка данных
-                    tulaDataList.clear();
-                    // Заново данные из БД добавлются в список
-                    tulaDataList.addAll(database.tulaDao().getAll());
-                    // Уведомление после вставки данных (Notify when data is inserted)
-                    tulaAdapter.notifyDataSetChanged();
+                        // Для мгновенного обновления списка добавленных позиций:
+                        // Очистка списка данных
+                        tulaDataList.clear();
+                        // Заново данные из БД добавлются в список
+                        tulaDataList.addAll(database.tulaDao().getAll());
+                        // Уведомление после вставки данных (Notify when data is inserted)
+                        tulaAdapter.notifyDataSetChanged();
 
-                    toast = Toast.makeText(AddTulaManuallyActivity.this, "Добавлено", Toast.LENGTH_SHORT);
-                }
-                else {
-                    toast = Toast.makeText(AddTulaManuallyActivity.this, "Не введён номер упаковки", Toast.LENGTH_SHORT);
+                        toast = Toast.makeText(AddTulaManuallyActivity.this, "Добавлено", Toast.LENGTH_SHORT);
+                    } else {
+                        toast = Toast.makeText(AddTulaManuallyActivity.this, "Не введён номер упаковки", Toast.LENGTH_SHORT);
+                    }
+                } else {
+                    toast = Toast.makeText(AddTulaManuallyActivity.this, "УЖЕ ДОБАВЛЕНО", Toast.LENGTH_SHORT);
                 }
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();

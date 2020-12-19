@@ -30,4 +30,7 @@ public interface TulaDao {
     // Подсчёт упаковок каждого сорта
     @Query("SELECT sort_ID, sort, COUNT(*) AS countPack FROM table_tula GROUP BY sort_ID")
     List<CountPack> getCountPack();
+
+    @Query("SELECT EXISTS(SELECT * FROM table_tula WHERE sort = :sort AND packageNumber = :packageNumber)")
+    Boolean checkBySortAndPackNumber(String sort, int packageNumber);
 }
