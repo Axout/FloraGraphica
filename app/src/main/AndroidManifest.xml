@@ -46,13 +46,7 @@
         </activity>
 
         <activity
-                android:name=".presentation.activity.AddTulaManuallyActivity"
-                android:label="Добавление в Туле"
-                android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-                android:name=".presentation.activity.AddTulaScanActivity"
+                android:name=".presentation.activity.AddTulaActivity"
                 android:label="Добавление в Туле"
                 android:screenOrientation="portrait">
         </activity>

@@ -58,25 +58,15 @@ public class TulaActivity extends AppCompatActivity {
         int id = item.getItemId();
         // Обработка нажатия кнопок выпадающего меню
         switch (id) {
-            case R.id.action_add_manually:
-                Intent intent = new Intent(TulaActivity.this, AddTulaManuallyActivity.class);
+            case R.id.action_add:
+                Intent intent = new Intent(TulaActivity.this, AddTulaActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.action_send_manually:
+            case R.id.action_send:
                 Toast.makeText(TulaActivity.this, "Ещё не работает", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.action_delete_manually:
+            case R.id.action_delete:
                 Toast.makeText(TulaActivity.this, "Ещё не работает", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.action_add_scan:
-                Intent intent2 = new Intent(TulaActivity.this, AddTulaScanActivity.class);
-                startActivity(intent2);
-                break;
-            case R.id.action_send_scan:
-                Toast.makeText(TulaActivity.this, "Ещё не работает", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.action_delete_scan:
-                Toast.makeText(TulaActivity.this, "Задолбал! Только первая кнопка работает!!!", Toast.LENGTH_SHORT).show();
                 break;
         }
 

@@ -33,7 +33,7 @@ public class TulaAdapter extends RecyclerView.Adapter<TulaAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Initialize view
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_row_tula_manually, parent,false);
+                .inflate(R.layout.list_row_add_tula, parent,false);
         return new ViewHolder(view);
     }
 

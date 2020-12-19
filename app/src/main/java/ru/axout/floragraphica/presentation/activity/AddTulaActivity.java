@@ -1,12 +1,18 @@
 package ru.axout.floragraphica.presentation.activity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.*;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+import ru.axout.floragraphica.CaptureAct;
 import ru.axout.floragraphica.R;
 import ru.axout.floragraphica.data.MainData;
 import ru.axout.floragraphica.data.RoomDB;
@@ -18,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class AddTulaManuallyActivity extends AppCompatActivity {
+public class AddTulaActivity extends AppCompatActivity implements View.OnClickListener{
 
     List<TulaData> tulaDataList = new ArrayList<>();
     LinearLayoutManager linearLayoutManager;
@@ -30,7 +36,7 @@ public class AddTulaManuallyActivity extends AppCompatActivity {
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_tula_manually);
+        setContentView(R.layout.activity_add_tula);
 
         // Присваивание переменным (Assign variables)
         final Spinner spinnerSort = findViewById(R.id.spSorts_tula);
@@ -54,7 +60,7 @@ public class AddTulaManuallyActivity extends AppCompatActivity {
         // Установка менеджера макета
         recyclerView.setLayoutManager(linearLayoutManager);
         // Инициализация adapter
-        tulaAdapter = new TulaAdapter(AddTulaManuallyActivity.this, tulaDataList);
+        tulaAdapter = new TulaAdapter(AddTulaActivity.this, tulaDataList);
         // Set adapter
         recyclerView.setAdapter(tulaAdapter);
 
@@ -97,18 +103,20 @@ public class AddTulaManuallyActivity extends AppCompatActivity {
                         // Уведомление после вставки данных (Notify when data is inserted)
                         tulaAdapter.notifyDataSetChanged();
 
-                        toast = Toast.makeText(AddTulaManuallyActivity.this, "Добавлено", Toast.LENGTH_SHORT);
+                        toast = Toast.makeText(AddTulaActivity.this, "Добавлено", Toast.LENGTH_SHORT);
                     } else {
-                        toast = Toast.makeText(AddTulaManuallyActivity.this, "Не введён номер упаковки", Toast.LENGTH_SHORT);
+                        toast = Toast.makeText(AddTulaActivity.this, "Не введён номер упаковки", Toast.LENGTH_SHORT);
                     }
                 } else {
-                    toast = Toast.makeText(AddTulaManuallyActivity.this, "УЖЕ ДОБАВЛЕНО", Toast.LENGTH_SHORT);
+                    toast = Toast.makeText(AddTulaActivity.this, "УЖЕ ДОБАВЛЕНО", Toast.LENGTH_SHORT);
                 }
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
             }
         });
 
+        Button btScan = findViewById(R.id.bt_scan_tula);
+        btScan.setOnClickListener(this);
     }
 
     // Форматирование даты под следующий вид: "dd.MM.yyyy"
@@ -137,5 +145,50 @@ public class AddTulaManuallyActivity extends AppCompatActivity {
         idAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spID.setAdapter(idAdapter);
         spID.setPrompt("Cорт тюльпана");
+    }
+
+    @Override
+    public void onClick(View v) {
+        scanCode();
+    }
+
+    private void scanCode() {
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setCaptureActivity(CaptureAct.class);
+        integrator.setOrientationLocked(false);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+        integrator.setPrompt("Сканирование...");
+        integrator.initiateScan();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result != null) {
+            if (result.getContents() != null) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage(result.getContents());
+                builder.setTitle("Результат сканирования");
+                builder.setPositiveButton("Ещё раз", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        scanCode();
+                    }
+                }).setNegativeButton("Закончить", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+            else {
+                Toast.makeText(this, "Нет результата", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 }

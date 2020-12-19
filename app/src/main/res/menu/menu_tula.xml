@@ -3,33 +3,18 @@
       xmlns:app="http://schemas.android.com/apk/res-auto"
       tools:context=".presentation.activity.TulaActivity">
     <item
-            android:id="@+id/action_add_manually"
+            android:id="@+id/action_add"
             android:orderInCategory="100"
-            android:title="Добавить вручную"
+            android:title="Добавить"
             app:showAsAction="never"/>
     <item
-            android:id="@+id/action_send_manually"
+            android:id="@+id/action_send"
             android:orderInCategory="100"
-            android:title="Отправить вручную"
+            android:title="Отправить"
             app:showAsAction="never"/>
     <item
-            android:id="@+id/action_delete_manually"
+            android:id="@+id/action_delete"
             android:orderInCategory="100"
-            android:title="Удалить вручную"
-            app:showAsAction="never"/>
-    <item
-            android:id="@+id/action_add_scan"
-            android:orderInCategory="100"
-            android:title="Добавить сканером"
-            app:showAsAction="never"/>
-    <item
-            android:id="@+id/action_send_scan"
-            android:orderInCategory="100"
-            android:title="Отправить сканером"
-            app:showAsAction="never"/>
-    <item
-            android:id="@+id/action_delete_scan"
-            android:orderInCategory="100"
-            android:title="Удалить сканером"
+            android:title="Удалить"
             app:showAsAction="never"/>
 </menu>
