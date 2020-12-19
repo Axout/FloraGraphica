@@ -6,6 +6,9 @@ public class CountPack {
     @ColumnInfo(name = "sort_ID")
     public int sort_ID;
 
+    @ColumnInfo(name = "sort")
+    public String sort;
+
     @ColumnInfo(name = "countPack")
     public int countPack;
 }

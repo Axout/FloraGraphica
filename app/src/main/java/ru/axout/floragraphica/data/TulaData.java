@@ -18,6 +18,9 @@ public class TulaData implements Serializable {
     @ColumnInfo(name = "sort_ID")
     private int sort_ID;
 
+    @ColumnInfo(name = "sort")
+    private String sort;
+
     @ColumnInfo(name = "packageNumber")
     private int packageNumber;
 
@@ -38,6 +41,14 @@ public class TulaData implements Serializable {
 
     public void setSort_ID(int sort_ID) {
         this.sort_ID = sort_ID;
+    }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
     }
 
     public int getPackageNumber() {

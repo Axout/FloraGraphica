@@ -78,6 +78,7 @@ public class AddTulaManuallyActivity extends AppCompatActivity {
                     TulaData tulaData = new TulaData();
                     // Передача данных в tulaData
                     tulaData.setSort_ID(mainData.getID());
+                    tulaData.setSort(mainData.getSort());
                     tulaData.setPackageNumber(Integer.parseInt(sPackNumber));
                     tulaData.setDateAdded(getFormatDate());
                     // Вставка данных (картежа) в БД (Insert text in database)
@@ -95,14 +96,12 @@ public class AddTulaManuallyActivity extends AppCompatActivity {
                     tulaAdapter.notifyDataSetChanged();
 
                     toast = Toast.makeText(AddTulaManuallyActivity.this, "Добавлено", Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.CENTER, 0, 0);
-                    toast.show();
                 }
                 else {
                     toast = Toast.makeText(AddTulaManuallyActivity.this, "Не введён номер упаковки", Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.CENTER, 0, 0);
-                    toast.show();
                 }
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
             }
         });
 
