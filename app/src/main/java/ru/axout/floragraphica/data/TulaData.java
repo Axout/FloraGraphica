@@ -4,7 +4,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
-import java.util.Date;
 
 import java.io.Serializable;
 
@@ -24,12 +23,6 @@ public class TulaData implements Serializable {
 
     @ColumnInfo(name = "dateAdded")
     private String dateAdded;
-
-//    @ColumnInfo(name = "color")
-//    private String color;
-//
-//    @ColumnInfo(name = "quantity")
-//    private int quantity;
 
     public int getID() {
         return ID;

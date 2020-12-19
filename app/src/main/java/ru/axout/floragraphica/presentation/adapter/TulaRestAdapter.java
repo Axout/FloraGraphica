@@ -1,6 +1,5 @@
 package ru.axout.floragraphica.presentation.adapter;
 
-import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,20 +7,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import ru.axout.floragraphica.R;
-import ru.axout.floragraphica.data.RoomDB;
+//import ru.axout.floragraphica.data.CountPack;
+import ru.axout.floragraphica.data.CountPack;
 import ru.axout.floragraphica.data.TulaData;
 
 import java.util.List;
 
 public class TulaRestAdapter extends RecyclerView.Adapter<TulaRestAdapter.ViewHolder> {
-    // Инициализируем переменные
-    private List<TulaData> dataList;
-    private Activity context;
+
+    public static final int PACKAGE_SIZE = 20; // количество цветов в упаковке
+    private List<CountPack> countPackList;
 
     // Конструктор
-    public TulaRestAdapter(Activity context, List<TulaData> dataList) {
-        this.context = context;
-        this.dataList = dataList;
+    public TulaRestAdapter(List<CountPack> countPackList) {
+        this.countPackList = countPackList;
         notifyDataSetChanged();
     }
 
@@ -37,19 +36,16 @@ public class TulaRestAdapter extends RecyclerView.Adapter<TulaRestAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         // Initialize main data
-        final TulaData data = dataList.get(position);
+        final CountPack countPack = countPackList.get(position);
 
         // Вывод данных пользователю
-//        holder.tvSort.setText(Integer.toString(data.getSort_ID()));
-//        holder.tvQuantity.setText(Integer.toString(data.getPackageNumber()));
-        holder.tvSort.setText("Sort 1");
-        holder.tvQuantity.setText("100500");
+        holder.tvSort.setText(Integer.toString(countPack.sort_ID));
+        holder.tvQuantity.setText(Integer.toString(countPack.countPack * PACKAGE_SIZE));
     }
 
     @Override
     public int getItemCount() {
-//        return dataList.size();
-        return 3;
+        return countPackList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

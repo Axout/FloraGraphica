@@ -26,4 +26,8 @@ public interface TulaDao {
     // Выдача всех запросов
     @Query("SELECT * FROM table_tula")
     List<TulaData> getAll();
+
+    // Подсчёт упаковок каждого сорта
+    @Query("SELECT sort_ID, COUNT(*) AS countPack FROM table_tula GROUP BY sort_ID")
+    List<CountPack> getCountPack();
 }

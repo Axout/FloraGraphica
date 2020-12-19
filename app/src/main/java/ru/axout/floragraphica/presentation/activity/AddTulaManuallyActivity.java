@@ -12,6 +12,7 @@ import ru.axout.floragraphica.data.MainData;
 import ru.axout.floragraphica.data.RoomDB;
 import ru.axout.floragraphica.data.TulaData;
 import ru.axout.floragraphica.presentation.adapter.TulaAdapter;
+import ru.axout.floragraphica.presentation.adapter.TulaRestAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -92,7 +93,6 @@ public class AddTulaManuallyActivity extends AppCompatActivity {
                     tulaDataList.addAll(database.tulaDao().getAll());
                     // Уведомление после вставки данных (Notify when data is inserted)
                     tulaAdapter.notifyDataSetChanged();
-
 
                     toast = Toast.makeText(AddTulaManuallyActivity.this, "Добавлено", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
