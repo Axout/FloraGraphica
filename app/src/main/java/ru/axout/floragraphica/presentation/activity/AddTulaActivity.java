@@ -129,7 +129,7 @@ public class AddTulaActivity extends AppCompatActivity implements View.OnClickLi
             if (!sPackNumber.equals("")) { // Если строка не пустая
                 TulaData tulaData = new TulaData();
                 // Передача данных в tulaData
-                tulaData.setSort_ID(mainData.getID());
+                tulaData.setSortID(mainData.getID());
                 tulaData.setSort(mainData.getSort());
                 tulaData.setPackageNumber(Integer.parseInt(sPackNumber));
                 tulaData.setDateAdded(getFormatDate());

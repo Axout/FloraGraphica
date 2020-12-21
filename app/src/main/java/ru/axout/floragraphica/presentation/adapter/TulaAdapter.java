@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import ru.axout.floragraphica.R;
-//import ru.axout.floragraphica.data.CountPack;
 import ru.axout.floragraphica.data.RoomDB;
 import ru.axout.floragraphica.data.TulaData;
 
@@ -45,7 +44,7 @@ public class TulaAdapter extends RecyclerView.Adapter<TulaAdapter.ViewHolder> {
         database = RoomDB.getInstance(context);
 
         // Вывод данных пользователю
-        holder.tvIDSort.setText(Integer.toString(data.getSort_ID()));
+        holder.tvIDSort.setText(Integer.toString(data.getSortID()));
         holder.tvPackNumber.setText(Integer.toString(data.getPackageNumber()));
         holder.tvDate.setText(data.getDateAdded());
 

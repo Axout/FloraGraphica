@@ -8,15 +8,15 @@ import androidx.room.PrimaryKey;
 import java.io.Serializable;
 
 @Entity(tableName = "table_tula",
-        foreignKeys = @ForeignKey(entity = MainData.class, parentColumns = "ID", childColumns = "sort_ID"))
+        foreignKeys = @ForeignKey(entity = MainData.class, parentColumns = "ID", childColumns = "sortID"))
 public class TulaData implements Serializable {
     // Создание первичного ключа, автоматическое
      // @PrimaryKey(autoGenerate = true)
     @PrimaryKey(autoGenerate = true)
     private int ID;
 
-    @ColumnInfo(name = "sort_ID")
-    private int sort_ID;
+    @ColumnInfo(name = "sortID")
+    private int sortID;
 
     @ColumnInfo(name = "sort")
     private String sort;
@@ -35,12 +35,12 @@ public class TulaData implements Serializable {
         this.ID = ID;
     }
 
-    public int getSort_ID() {
-        return sort_ID;
+    public int getSortID() {
+        return sortID;
     }
 
-    public void setSort_ID(int sort_ID) {
-        this.sort_ID = sort_ID;
+    public void setSortID(int sortID) {
+        this.sortID = sortID;
     }
 
     public String getSort() {
