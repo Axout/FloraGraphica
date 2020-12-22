@@ -12,6 +12,7 @@ import ru.axout.floragraphica.R;
 import ru.axout.floragraphica.data.RoomDB;
 import ru.axout.floragraphica.data.TulaData;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class TulaAdapter extends RecyclerView.Adapter<TulaAdapter.ViewHolder> {
@@ -43,9 +44,14 @@ public class TulaAdapter extends RecyclerView.Adapter<TulaAdapter.ViewHolder> {
         // Инициализация БД
         database = RoomDB.getInstance(context);
 
+        // Не обязательно создавать каждый раз новый объект DecimalFormat, чтобы задать новый шаблон.
+        // Будет достаточно использовать его методы applyPattern и applyLocalizedPattern.
+        DecimalFormat dF1 = new DecimalFormat( "000" );
+        DecimalFormat dF2 = new DecimalFormat( "00000" );
+
         // Вывод данных пользователю
-        holder.tvIDSort.setText(Integer.toString(data.getSortID()));
-        holder.tvPackNumber.setText(Integer.toString(data.getPackageNumber()));
+        holder.tvIDSort.setText(dF1.format(data.getSortID()));
+        holder.tvPackNumber.setText(dF2.format(data.getPackageNumber()));
         holder.tvDate.setText(data.getDateAdded());
 
         // Обработка нажатия кнопки удаления одного элемента БД

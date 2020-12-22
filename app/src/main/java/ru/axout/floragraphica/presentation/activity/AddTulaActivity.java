@@ -66,6 +66,19 @@ public class AddTulaActivity extends AppCompatActivity implements View.OnClickLi
         btScan.setOnClickListener(this);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Для мгновенного обновления списка добавленных позиций:
+        // Очистка списка данных
+        tulaDataList.clear();
+        // Заново данные из БД добавлются в список
+        tulaDataList.addAll(database.tulaDao().getAll());
+        // Уведомление после вставки данных (Notify when data is inserted)
+        tulaAdapter.notifyDataSetChanged();
+    }
+
     // Форматирование даты под следующий вид: "dd.MM.yyyy"
     // Фиксация даты добавления упаковки
     private String getFormatDate() {
@@ -99,7 +112,7 @@ public class AddTulaActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bt_add_tula:
-                addManually();
+                addManuallyToDB();
                 break;
             case R.id.bt_scan_tula:
                 scanCode();
@@ -107,7 +120,7 @@ public class AddTulaActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    private void addManually() {
+    private void addManuallyToDB() {
 
         // Присваивание переменным (Assign variables)
         final Spinner spinnerSort = findViewById(R.id.spSorts_tula);
@@ -201,6 +214,28 @@ public class AddTulaActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public void addScanDataToDB(String scanResult) {
+        int cod = Integer.parseInt(scanResult);
+        int sortID = cod / 100000;
+        int packNumber = cod % 100000;
 
+        // Получение строки из table_main по ID
+        MainData mainData = database.mainDao().getWhereID(sortID);
+//        Toast.makeText(this, mainData.getSort(), Toast.LENGTH_SHORT).show();
+        String sort = mainData.getSort();
+
+        if (!database.tulaDao().checkBySortAndPackNumber(sort, packNumber)) {
+            TulaData tulaData = new TulaData();
+            // Передача данных в tulaData
+            tulaData.setSortID(sortID);
+            tulaData.setSort(sort);
+            tulaData.setPackageNumber(packNumber);
+            tulaData.setDateAdded(getFormatDate());
+            // Вставка данных (картежа) в БД (Insert text in database)
+            database.tulaDao().insert(tulaData);
+
+            Toast.makeText(AddTulaActivity.this, "Добавлено", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(AddTulaActivity.this, "УЖЕ ДОБАВЛЕНО", Toast.LENGTH_SHORT).show();
+        }
     }
 }
