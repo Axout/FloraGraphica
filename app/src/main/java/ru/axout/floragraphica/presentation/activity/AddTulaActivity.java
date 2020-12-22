@@ -186,23 +186,8 @@ public class AddTulaActivity extends AppCompatActivity implements View.OnClickLi
         if (result != null) {
             final String scanResult = result.getContents();
             if (scanResult != null) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage(scanResult);
-                builder.setTitle("Результат сканирования");
-                builder.setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        addScanDataToDB(scanResult);
-                        scanCode();
-                    }
-                }).setNegativeButton("Закончить", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                addScanDataToDB(scanResult);
+                scanCode();
             }
             else {
                 Toast.makeText(this, "Нет результата", Toast.LENGTH_SHORT).show();
