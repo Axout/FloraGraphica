@@ -67,7 +67,8 @@ public class TulaActivity extends AppCompatActivity {
                 startActivity(intent1);
                 break;
             case R.id.action_sendToVarsh:
-                Toast.makeText(TulaActivity.this, "Ещё не работает", Toast.LENGTH_SHORT).show();
+                Intent intent2 = new Intent(TulaActivity.this, SendToVarshActivity.class);
+                startActivity(intent2);
                 break;
             case R.id.action_selled:
                 Toast.makeText(TulaActivity.this, "Ещё не работает", Toast.LENGTH_SHORT).show();

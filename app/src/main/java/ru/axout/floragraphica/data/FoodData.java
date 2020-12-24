@@ -7,8 +7,11 @@ import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
-@Entity(tableName = "table_food")
-        //, foreignKeys = @ForeignKey(entity = TulaData.class, parentColumns = "sortID", childColumns = "sortID"))
+import static androidx.room.ForeignKey.CASCADE;
+
+@Entity(tableName = "table_food",
+        foreignKeys = @ForeignKey(entity = MainData.class, parentColumns = "ID", childColumns = "sortID",
+                onDelete = CASCADE))
 public class FoodData implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int ID;

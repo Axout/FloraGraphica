@@ -5,8 +5,11 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import static androidx.room.ForeignKey.CASCADE;
+
 @Entity(tableName = "table_varsh",
-        foreignKeys = @ForeignKey(entity = MainData.class, parentColumns = "ID", childColumns = "sortID"))
+        foreignKeys = @ForeignKey(entity = MainData.class, parentColumns = "ID", childColumns = "sortID",
+                onDelete = CASCADE))
 public class VarshData {
     // Создание первичного ключа, автоматическое
     // @PrimaryKey(autoGenerate = true)

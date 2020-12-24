@@ -11,7 +11,8 @@ import static androidx.room.ForeignKey.CASCADE;
 //onDelete = CASCADE - позволяет при удалении родительского ключа, удалять связанные с ним дочерние ключи.
 
 @Entity(tableName = "table_tula",
-        foreignKeys = @ForeignKey(entity = MainData.class, parentColumns = "ID", childColumns = "sortID"))
+        foreignKeys = @ForeignKey(entity = MainData.class, parentColumns = "ID", childColumns = "sortID",
+                onDelete = CASCADE))
 public class TulaData implements Serializable {
     // Создание первичного ключа, автоматическое
      // @PrimaryKey(autoGenerate = true)
