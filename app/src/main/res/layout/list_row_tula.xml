@@ -9,14 +9,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="16dp">
+            android:padding="16dp"
+            android:background="@color/colorPrimary">
 
         <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/flower"
-                android:src="@drawable/ic_flower"
+                android:src="@drawable/ic_flower_white"
                 android:gravity="center"/>
         <TextView
                 android:layout_width="0dp"
@@ -24,14 +25,16 @@
                 android:layout_weight="2"
                 android:id="@+id/tv_sort"
                 android:textSize="14sp"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="@color/colorWhite"/>
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/tv_quantity"
                 android:textSize="14sp"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="@color/colorWhite"/>
 
     </LinearLayout>
 
