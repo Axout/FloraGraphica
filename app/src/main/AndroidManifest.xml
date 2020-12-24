@@ -52,6 +52,12 @@
         </activity>
 
         <activity
+                android:name=".presentation.activity.SendToFoodActivity"
+                android:label="Отправление на ФудСити"
+                android:screenOrientation="portrait">
+        </activity>
+
+        <activity
                 android:name=".CaptureAct"
                 android:screenOrientation="fullSensor"
                 android:stateNotNeeded="true"

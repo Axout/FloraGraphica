@@ -1,9 +1,6 @@
 package ru.axout.floragraphica.data;
 
-import androidx.room.Dao;
-import androidx.room.Delete;
-import androidx.room.Insert;
-import androidx.room.Query;
+import androidx.room.*;
 
 import java.util.List;
 
@@ -19,10 +16,6 @@ public interface TulaDao {
     @Delete
     void delete(TulaData tulaData);
 
-//    // Обновление запросов
-//    @Query("UPDATE table_tula SET quantity = :sQuantity WHERE ID = :sID")
-//    void update(int sID, String sQuantity);
-
     // Выдача всех запросов
     @Query("SELECT * FROM table_tula")
     List<TulaData> getAll();
@@ -33,4 +26,14 @@ public interface TulaDao {
 
     @Query("SELECT EXISTS(SELECT * FROM table_tula WHERE sort = :sort AND packageNumber = :packageNumber)")
     Boolean checkBySortAndPackNumber(String sort, int packageNumber);
+
+    @Query("DELETE FROM table_tula WHERE sort = :sortID AND packageNumber = :packageNumber")
+    void deleteBySortIDAndPackNum(int sortID, int packageNumber);
+
+    @Query("SELECT * FROM table_tula WHERE ID = :sortID")
+    TulaData getWhereSortID(int sortID);
+
+//    // Обновление запросов
+//    @Query("UPDATE table_tula SET quantity = :sQuantity WHERE ID = :sID")
+//    void update(int sID, String sQuantity);
 }

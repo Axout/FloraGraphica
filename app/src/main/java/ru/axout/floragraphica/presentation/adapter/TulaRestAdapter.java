@@ -39,7 +39,6 @@ public class TulaRestAdapter extends RecyclerView.Adapter<TulaRestAdapter.ViewHo
         final CountPack countPack = countPackList.get(position);
 
         // Вывод данных пользователю
-//        holder.tvSort.setText(Integer.toString(countPack.sort_ID));
         holder.tvSort.setText(countPack.sort);
         holder.tvQuantity.setText(Integer.toString(countPack.countPack * PACKAGE_SIZE));
     }

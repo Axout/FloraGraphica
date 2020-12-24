@@ -12,7 +12,7 @@ import androidx.room.RoomDatabase;
 В параметрах аннотации Database указываем, какие Entity будут использоваться, и версию базы.
 Для каждого Entity класса из списка entities будет создана таблица.
  */
-@Database(entities = {MainData.class, TulaData.class},version = 1,exportSchema = false)
+@Database(entities = {MainData.class, TulaData.class, FoodData.class},version = 1,exportSchema = false)
 public abstract class RoomDB extends RoomDatabase {
     // Создаю экземпляр БД
     private static RoomDB database;
@@ -34,5 +34,6 @@ public abstract class RoomDB extends RoomDatabase {
     // В Database классе описываем абстрактные методы для получения Dao объектов, которые будут использоваться.
     public abstract MainDao mainDao();
     public abstract TulaDao tulaDao();
+    public abstract FoodDao foodDao();
 }
 

@@ -1,12 +1,10 @@
 package ru.axout.floragraphica.presentation.activity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.*;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,6 +28,7 @@ public class AddTulaActivity extends AppCompatActivity implements View.OnClickLi
     LinearLayoutManager linearLayoutManager;
     RoomDB database;
     TulaAdapter tulaAdapter;
+    Toast toast;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -136,7 +135,6 @@ public class AddTulaActivity extends AppCompatActivity implements View.OnClickLi
 
         // Запись данных в table_tula
         // Проверяем, чтобы не добавить в БД ещё раз одни и те же данные
-        Toast toast;
         if (!database.tulaDao().checkBySortAndPackNumber(sortFromSpinner, packNumber)) {
             // Проверка пустой строки
             if (!sPackNumber.equals("")) { // Если строка не пустая
@@ -160,15 +158,9 @@ public class AddTulaActivity extends AppCompatActivity implements View.OnClickLi
                 // Уведомление после вставки данных (Notify when data is inserted)
                 tulaAdapter.notifyDataSetChanged();
 
-                toast = Toast.makeText(AddTulaActivity.this, "Добавлено", Toast.LENGTH_SHORT);
-            } else {
-                toast = Toast.makeText(AddTulaActivity.this, "Не введён номер упаковки", Toast.LENGTH_SHORT);
-            }
-        } else {
-            toast = Toast.makeText(AddTulaActivity.this, "УЖЕ ДОБАВЛЕНО", Toast.LENGTH_SHORT);
-        }
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.show();
+                showMessageCenter("Добавлено");
+            } else { showMessageCenter("Не введён номер упаковки"); }
+        } else { showMessageCenter("УЖЕ ДОБАВЛЕНО"); }
     }
 
     private void scanCode() {
@@ -186,11 +178,15 @@ public class AddTulaActivity extends AppCompatActivity implements View.OnClickLi
         if (result != null) {
             final String scanResult = result.getContents();
             if (scanResult != null) {
-                addScanDataToDB(scanResult);
+                try {
+                    addScanDataToDB(scanResult);
+                } catch (Exception e) {
+                    showMessageCenter("ОТКАЗ");
+                }
                 scanCode();
             }
             else {
-                Toast.makeText(this, "Нет результата", Toast.LENGTH_SHORT).show();
+                showMessage("Нет результата");
             }
         }
         else {
@@ -217,10 +213,27 @@ public class AddTulaActivity extends AppCompatActivity implements View.OnClickLi
             tulaData.setDateAdded(getFormatDate());
             // Вставка данных (картежа) в БД (Insert text in database)
             database.tulaDao().insert(tulaData);
-
-            Toast.makeText(AddTulaActivity.this, "Добавлено", Toast.LENGTH_SHORT).show();
+            // Вывод тоста
+            showMessage("Добавлено");
         } else {
-            Toast.makeText(AddTulaActivity.this, "УЖЕ ДОБАВЛЕНО", Toast.LENGTH_SHORT).show();
+            showMessage("УЖЕ ДОБАВЛЕНО");
         }
+    }
+
+    private void showMessage(String text) {
+        if (toast != null) {
+            toast.cancel();
+        }
+        toast = Toast.makeText(AddTulaActivity.this, text, Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    private void showMessageCenter(String text) {
+        if (toast != null) {
+            toast.cancel();
+        }
+        toast = Toast.makeText(AddTulaActivity.this, text, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
     }
 }
