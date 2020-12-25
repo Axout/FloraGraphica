@@ -4,7 +4,6 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
-import ru.axout.floragraphica.presentation.activity.SalesData;
 
 import java.util.List;
 

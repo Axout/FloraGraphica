@@ -7,7 +7,7 @@
     android:padding="16dp"
     android:orientation="vertical"
     tools:context=".presentation.activity.TulaActivity"
-android:background="@color/colorPrimaryDark">
+    android:background="@color/colorPrimaryDark">
 
     <!-- Шапка таблицы -->
     <LinearLayout

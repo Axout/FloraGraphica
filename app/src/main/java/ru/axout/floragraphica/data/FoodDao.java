@@ -29,4 +29,7 @@ public interface FoodDao {
 
     @Query("SELECT EXISTS(SELECT * FROM table_food WHERE sort = :sort AND packageNumber = :packageNumber)")
     Boolean checkBySortAndPackNumber(int sort, int packageNumber);
+
+    @Query("SELECT * FROM table_food WHERE ID = :sortID")
+    FoodData getWhereSortID(int sortID);
 }

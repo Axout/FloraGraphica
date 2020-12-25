@@ -1,4 +1,4 @@
-package ru.axout.floragraphica.presentation.activity;
+package ru.axout.floragraphica.data;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

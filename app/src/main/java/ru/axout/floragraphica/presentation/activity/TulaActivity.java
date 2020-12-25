@@ -69,8 +69,8 @@ public class TulaActivity extends AppCompatActivity {
                 Intent intent2 = new Intent(TulaActivity.this, SendToVarshActivity.class);
                 startActivity(intent2);
                 break;
-            case R.id.action_selled:
-                Intent intent3 = new Intent(TulaActivity.this, SalesActivity.class);
+            case R.id.action_sold:
+                Intent intent3 = new Intent(TulaActivity.this, SalesTulaActivity.class);
                 startActivity(intent3);
                 break;
         }

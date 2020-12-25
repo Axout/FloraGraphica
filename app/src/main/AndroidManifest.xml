@@ -69,8 +69,20 @@
         </activity>
 
         <activity
-                android:name=".presentation.activity.SalesActivity"
-                android:label="Продажа"
+                android:name=".presentation.activity.SalesTulaActivity"
+                android:label="Продажа из Тулы"
+                android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+                android:name=".presentation.activity.SalesFoodActivity"
+                android:label="Продажа с ФудСити"
+                android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+                android:name=".presentation.activity.SalesVarshActivity"
+                android:label="Продажа с Варшавки"
                 android:screenOrientation="portrait">
         </activity>
 

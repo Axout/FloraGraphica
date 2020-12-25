@@ -13,12 +13,13 @@ import com.google.zxing.integration.android.IntentResult;
 import ru.axout.floragraphica.CaptureAct;
 import ru.axout.floragraphica.R;
 import ru.axout.floragraphica.data.RoomDB;
-import ru.axout.floragraphica.data.TulaData;
+import ru.axout.floragraphica.data.SalesData;
+import ru.axout.floragraphica.data.VarshData;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class SalesActivity extends AppCompatActivity {
+public class SalesVarshActivity extends AppCompatActivity {
 
     RoomDB database;
     Toast toast;
@@ -75,14 +76,14 @@ public class SalesActivity extends AppCompatActivity {
         int cod = Integer.parseInt(scanResult);
         int sortID = cod / 100000;
         int packNumber = cod % 100000;
-        TulaData tulaData;
+        VarshData varshData;
         String sort;
 
-        // Получение строки из table_tula по sortID
-        tulaData = database.tulaDao().getWhereSortID(sortID);
+        // Получение строки из table_varsh по sortID
+        varshData = database.varshDao().getWhereSortID(sortID);
         // Получение сорта из полученной строки
-        sort = tulaData.getSort();
-        // Добавление в table_varsh
+        sort = varshData.getSort();
+        // Добавление в table_sales
         SalesData salesData = new SalesData();
         salesData.setSortID(sortID);
         salesData.setSort(sort);
@@ -91,10 +92,10 @@ public class SalesActivity extends AppCompatActivity {
         // Вставка данных (картежа) в БД (Insert text in database)
         database.salesDao().insert(salesData);
 
-        // Удаление из table_tula отправленной на Варшавку упаковки
-        database.tulaDao().delete(tulaData);
+        // Удаление из table_varsh отправленной на Варшавку упаковки
+        database.varshDao().delete(varshData);
 
-        showMessage("Отправлено");
+        showMessage("Продано");
     }
 
     // Форматирование даты под следующий вид: "dd.MM.yyyy"
@@ -109,7 +110,7 @@ public class SalesActivity extends AppCompatActivity {
         if (toast != null) {
             toast.cancel();
         }
-        toast = Toast.makeText(SalesActivity.this, text, Toast.LENGTH_SHORT);
+        toast = Toast.makeText(SalesVarshActivity.this, text, Toast.LENGTH_SHORT);
         toast.show();
     }
 
@@ -117,7 +118,7 @@ public class SalesActivity extends AppCompatActivity {
         if (toast != null) {
             toast.cancel();
         }
-        toast = Toast.makeText(SalesActivity.this, text, Toast.LENGTH_LONG);
+        toast = Toast.makeText(SalesVarshActivity.this, text, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
