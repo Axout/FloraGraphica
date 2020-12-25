@@ -71,7 +71,8 @@ public class TulaActivity extends AppCompatActivity {
                 startActivity(intent2);
                 break;
             case R.id.action_selled:
-                Toast.makeText(TulaActivity.this, "Ещё не работает", Toast.LENGTH_SHORT).show();
+                Intent intent3 = new Intent(TulaActivity.this, SalesActivity.class);
+                startActivity(intent3);
                 break;
         }
 

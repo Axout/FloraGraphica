@@ -14,12 +14,11 @@ import ru.axout.floragraphica.CaptureAct;
 import ru.axout.floragraphica.R;
 import ru.axout.floragraphica.data.RoomDB;
 import ru.axout.floragraphica.data.TulaData;
-import ru.axout.floragraphica.data.VarshData;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class SendToVarshActivity extends AppCompatActivity {
+public class SalesActivity extends AppCompatActivity {
 
     RoomDB database;
     Toast toast;
@@ -84,13 +83,13 @@ public class SendToVarshActivity extends AppCompatActivity {
         // Получение сорта из полученной строки
         sort = tulaData.getSort();
         // Добавление в table_varsh
-        VarshData varshData = new VarshData();
-        varshData.setSortID(sortID);
-        varshData.setSort(sort);
-        varshData.setPackageNumber(packNumber);
-        varshData.setDateAdded(getFormatDate());
+        SalesData salesData = new SalesData();
+        salesData.setSortID(sortID);
+        salesData.setSort(sort);
+        salesData.setPackageNumber(packNumber);
+        salesData.setDateAdded(getFormatDate());
         // Вставка данных (картежа) в БД (Insert text in database)
-        database.varshDao().insert(varshData);
+        database.salesDao().insert(salesData);
 
         // Удаление из table_tula отправленной на Варшавку упаковки
         database.tulaDao().delete(tulaData);
@@ -110,7 +109,7 @@ public class SendToVarshActivity extends AppCompatActivity {
         if (toast != null) {
             toast.cancel();
         }
-        toast = Toast.makeText(SendToVarshActivity.this, text, Toast.LENGTH_SHORT);
+        toast = Toast.makeText(SalesActivity.this, text, Toast.LENGTH_SHORT);
         toast.show();
     }
 
@@ -118,7 +117,7 @@ public class SendToVarshActivity extends AppCompatActivity {
         if (toast != null) {
             toast.cancel();
         }
-        toast = Toast.makeText(SendToVarshActivity.this, text, Toast.LENGTH_LONG);
+        toast = Toast.makeText(SalesActivity.this, text, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
