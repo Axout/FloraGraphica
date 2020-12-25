@@ -39,8 +39,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         // Обработка нажатия "Добавить сорт"
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_add_sort) {
             Intent intent = new Intent(HomeActivity.this, AddDataActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.action_sold) {
+            Intent intent = new Intent(HomeActivity.this, SoldActivity.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);

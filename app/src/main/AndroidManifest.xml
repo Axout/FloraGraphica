@@ -40,6 +40,11 @@
         </activity>
 
         <activity
+                android:name=".presentation.activity.SoldActivity"
+                android:label="Проданные позиции">
+        </activity>
+
+        <activity
                 android:name=".presentation.activity.AddDataActivity"
                 android:label="Добавьте новые сорта"
                 android:screenOrientation="portrait">
