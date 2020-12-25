@@ -80,7 +80,7 @@ public class SalesVarshActivity extends AppCompatActivity {
         String sort;
 
         // Получение строки из table_varsh по sortID
-        varshData = database.varshDao().getWhereSortID(sortID);
+        varshData = database.varshDao().getWhereSortIDAndPackNum(sortID, packNumber);
         // Получение сорта из полученной строки
         sort = varshData.getSort();
         // Добавление в table_sales

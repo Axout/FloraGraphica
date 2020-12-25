@@ -32,4 +32,7 @@ public interface FoodDao {
 
     @Query("SELECT * FROM table_food WHERE ID = :sortID")
     FoodData getWhereSortID(int sortID);
+
+    @Query("SELECT * FROM table_food WHERE ID = :sortID AND packageNumber = :packageNumber")
+    FoodData getWhereSortIDAndPackNum(int sortID, int packageNumber);
 }

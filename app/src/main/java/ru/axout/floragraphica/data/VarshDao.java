@@ -32,4 +32,7 @@ public interface VarshDao {
 
     @Query("SELECT * FROM table_varsh WHERE ID = :sortID")
     VarshData getWhereSortID(int sortID);
+
+    @Query("SELECT * FROM table_varsh WHERE ID = :sortID AND packageNumber = :packageNumber")
+    VarshData getWhereSortIDAndPackNum(int sortID, int packageNumber);
 }

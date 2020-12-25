@@ -80,7 +80,7 @@ public class SalesFoodActivity extends AppCompatActivity {
         String sort;
 
         // Получение строки из table_food по sortID
-        foodData = database.foodDao().getWhereSortID(sortID);
+        foodData = database.foodDao().getWhereSortIDAndPackNum(sortID, packNumber);
         // Получение сорта из полученной строки
         sort = foodData.getSort();
         // Добавление в table_sales

@@ -80,7 +80,7 @@ public class SendToVarshActivity extends AppCompatActivity {
         String sort;
 
         // Получение строки из table_tula по sortID
-        tulaData = database.tulaDao().getWhereSortID(sortID);
+        tulaData = database.tulaDao().getWhereSortIDAndPackNum(sortID, packNumber);
         // Получение сорта из полученной строки
         sort = tulaData.getSort();
         // Добавление в table_varsh
