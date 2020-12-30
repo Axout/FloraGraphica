@@ -28,13 +28,19 @@ public interface MainDao {
     void reset(List<MainData> mainData);
 
 //    // Обновление запросов
-//    @Query("UPDATE table_Assortment SET quantity = :sQuantity WHERE ID = :sID")
+//    @Query("UPDATE table_main SET quantity = :sQuantity WHERE ID = :sID")
 //    void update(int sID, String sQuantity);
 
     // Выдача всех запросов
-    @Query("SELECT * FROM table_Assortment")
+    @Query("SELECT * FROM table_main")
     List<MainData> getAll();
 
-//    @Query("SELECT ID FROM table_Assortment")
-//    List<MainData> getID();
+    @Query("SELECT * FROM table_main WHERE ID = :id")
+    MainData getWhereID(int id);
+
+    @Query("SELECT * FROM table_main WHERE sort = :sort")
+    MainData getWhereSort(String sort);
+
+//    @Query("SELECT * FROM table_main WHERE ID IN (:listID)")
+//    List<MainData> getWhereID(List<Integer> listID);
 }

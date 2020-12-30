@@ -9,51 +9,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="16dp">
-
-        <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:id="@+id/tv_id_tula"
-                android:textSize="14sp"/>
-
-        <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:id="@+id/tv_sort_tula"
-                android:textSize="14sp"/>
-
-        <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:id="@+id/tv_color_tula"
-                android:textSize="14sp"/>
-
-        <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:id="@+id/tv_type_tula"
-                android:textSize="14sp"/>
-
-        <!--
-        <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:id="@+id/text_view_quantity"
-                android:textSize="14sp"/>
-        -->
+            android:padding="16dp"
+            android:background="@color/colorPrimary">
 
         <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/bt_delete"
-                android:layout_marginStart="8dp"
-                android:src="@drawable/ic_delete"/>
+                android:layout_weight="1"
+                android:id="@+id/flower"
+                android:src="@drawable/ic_flower_white"
+                android:gravity="center"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:id="@+id/tv_sort"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/tv_quantity"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"/>
 
     </LinearLayout>
 

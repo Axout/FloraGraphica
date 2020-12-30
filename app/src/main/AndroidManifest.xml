@@ -40,20 +40,49 @@
         </activity>
 
         <activity
+                android:name=".presentation.activity.SoldActivity"
+                android:label="Проданные позиции">
+        </activity>
+
+        <activity
                 android:name=".presentation.activity.AddDataActivity"
                 android:label="Добавьте новые сорта"
                 android:screenOrientation="portrait">
         </activity>
 
         <activity
-                android:name=".presentation.activity.AddTulaManuallyActivity"
+                android:name=".presentation.activity.AddTulaActivity"
                 android:label="Добавление в Туле"
                 android:screenOrientation="portrait">
         </activity>
 
         <activity
-                android:name=".presentation.activity.AddTulaScanActivity"
-                android:label="Добавление в Туле"
+                android:name=".presentation.activity.SendToFoodActivity"
+                android:label="Отправление на ФудСити"
+                android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+                android:name=".presentation.activity.SendToVarshActivity"
+                android:label="Отправление на Варшавку"
+                android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+                android:name=".presentation.activity.SalesTulaActivity"
+                android:label="Продажа из Тулы"
+                android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+                android:name=".presentation.activity.SalesFoodActivity"
+                android:label="Продажа с ФудСити"
+                android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+                android:name=".presentation.activity.SalesVarshActivity"
+                android:label="Продажа с Варшавки"
                 android:screenOrientation="portrait">
         </activity>
 

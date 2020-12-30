@@ -4,67 +4,43 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import ru.axout.floragraphica.R;
+import ru.axout.floragraphica.data.CountPack;
+import ru.axout.floragraphica.data.RoomDB;
+import ru.axout.floragraphica.presentation.adapter.TulaRestAdapter;
 
+import java.util.List;
 
 public class TulaActivity extends AppCompatActivity {
-
-//    // Инициализация переменных
-//    RecyclerView recyclerView;
-//
-//    // Список с данными (картежи)
-//    // БД создаётся в MainData
-//    List<TulaData> dataList = new ArrayList<>();
-//    LinearLayoutManager linearLayoutManager;
-//    RoomDB database;
-//    TulaAdapter adapter;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tula);
+    }
 
-//        // Присваивание переменным (Assign variables)
-//        recyclerView = findViewById(R.id.recycler_view);
-//
-//        // Initialize BD
-//        database = RoomDB.getInstance(this);
-//        // Хранение данных БД в data list (Store database value in data list)
-//        dataList = database.tulaDao().getAll();
-//
-//        // Инициализация менеджера линейного макета (Initialize linear layout manager)
-//        linearLayoutManager = new LinearLayoutManager(this);
-//        // Установка менеджера макета
-//        recyclerView.setLayoutManager(linearLayoutManager);
-//        // Инициализация adapter
-//        adapter = new TulaAdapter(TulaActivity.this, dataList);
-//        // Set adapter
-//        recyclerView.setAdapter(adapter);
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-//        // Получение данных
-//        String sID = editTextID.getText().toString().trim();
-//        String sType = spTypes.getSelectedItem().toString();
-//        String sColor = spColors.getSelectedItem().toString();
-//        String sSort = spSorts.getSelectedItem().toString();
-//
-//        // Initialize main data
-//        MainData data = new MainData();
-//        // Передача данных в MainData
-//        data.setID(Integer.parseInt(sID));
-//        data.setType(sType);
-//        data.setColor(sColor);
-//        data.setSort(sSort);
-//        // Вставка данных (картежа) в БД (Insert text in database)
-//        database.mainDao().insert(data);
-//        // Очистка списка данных, что выводится пользователю
-//        dataList.clear();
-//        // Заново данные из БД добавлются в список
-//        dataList.addAll(database.mainDao().getAll());
-//        // Уведомление после вставки данных (Notify when data is inserted)
-//        adapter.notifyDataSetChanged();
+        // Initialize BD
+        RoomDB database = RoomDB.getInstance(this);
+        // Запрос в БД, полученные данные записывает в List<CountPack>
+        List<CountPack> countPackList = database.tulaDao().getCountPack();
+        // Присваивание переменным (Assign variables)
+        RecyclerView recyclerView = findViewById(R.id.recycler_view_tula);
+        // Инициализация менеджера линейного макета (Initialize linear layout manager)
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        // Установка менеджера макета
+        recyclerView.setLayoutManager(linearLayoutManager);
+        // Инициализация adapter
+        TulaRestAdapter tulaRestAdapter = new TulaRestAdapter(countPackList);
+        // Set adapter
+        recyclerView.setAdapter(tulaRestAdapter);
     }
 
     // Создание меню экшн бара
@@ -81,25 +57,21 @@ public class TulaActivity extends AppCompatActivity {
         int id = item.getItemId();
         // Обработка нажатия кнопок выпадающего меню
         switch (id) {
-            case R.id.action_add_manually:
-                Intent intent = new Intent(TulaActivity.this, AddTulaManuallyActivity.class);
+            case R.id.action_add:
+                Intent intent = new Intent(TulaActivity.this, AddTulaActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.action_send_manually:
-                Toast.makeText(TulaActivity.this, "Ещё не работает", Toast.LENGTH_SHORT).show();
+            case R.id.action_sendToFood:
+                Intent intent1 = new Intent(TulaActivity.this, SendToFoodActivity.class);
+                startActivity(intent1);
                 break;
-            case R.id.action_delete_manually:
-                Toast.makeText(TulaActivity.this, "Ещё не работает", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.action_add_scan:
-                Intent intent2 = new Intent(TulaActivity.this, AddTulaScanActivity.class);
+            case R.id.action_sendToVarsh:
+                Intent intent2 = new Intent(TulaActivity.this, SendToVarshActivity.class);
                 startActivity(intent2);
                 break;
-            case R.id.action_send_scan:
-                Toast.makeText(TulaActivity.this, "Ещё не работает", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.action_delete_scan:
-                Toast.makeText(TulaActivity.this, "Задолбал! Только первая кнопка работает!!!", Toast.LENGTH_SHORT).show();
+            case R.id.action_sold:
+                Intent intent3 = new Intent(TulaActivity.this, SalesTulaActivity.class);
+                startActivity(intent3);
                 break;
         }
 

@@ -4,18 +4,18 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+import ru.axout.floragraphica.data.MainData;
 
 import java.io.Serializable;
 
 import static androidx.room.ForeignKey.CASCADE;
-//onDelete = CASCADE - позволяет при удалении родительского ключа, удалять связанные с ним дочерние ключи.
 
-@Entity(tableName = "table_tula",
+@Entity(tableName = "table_sales",
         foreignKeys = @ForeignKey(entity = MainData.class, parentColumns = "ID", childColumns = "sortID",
                 onDelete = CASCADE))
-public class TulaData implements Serializable {
+public class SalesData implements Serializable {
     // Создание первичного ключа, автоматическое
-     // @PrimaryKey(autoGenerate = true)
+    // @PrimaryKey(autoGenerate = true)
     @PrimaryKey(autoGenerate = true)
     private int ID;
 

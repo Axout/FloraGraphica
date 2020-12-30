@@ -62,8 +62,9 @@ public class AddDataActivity extends AppCompatActivity {
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Получение данных
+                // Получение данных из editText
                 String sID = editTextID.getText().toString().trim();
+                // Получение данных из выпадающего меню (spinner)
                 String sType = spTypes.getSelectedItem().toString();
                 String sColor = spColors.getSelectedItem().toString();
                 String sSort = spSorts.getSelectedItem().toString();
