@@ -8,19 +8,26 @@ import android.widget.Button;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import ru.axout.floragraphica.CaptureAct;
 import ru.axout.floragraphica.R;
 import ru.axout.floragraphica.data.*;
+import ru.axout.floragraphica.presentation.adapter.SendFoodAdapter;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class SendToFoodActivity extends AppCompatActivity {
 
+    List<FoodData> foodDataList = new ArrayList<>();
     RoomDB database;
     Toast toast;
+    SendFoodAdapter sendFoodAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,6 +37,19 @@ public class SendToFoodActivity extends AppCompatActivity {
         // Initialize BD
         database = RoomDB.getInstance(this);
         Button btScan = findViewById(R.id.bt_scan_to_food);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view_tula_manually);
+
+        // Вывод данных пользователю:
+        // Хранение данных БД в data list (Store database value in data list)
+        foodDataList = database.foodDao().getAll();
+        // Инициализация менеджера линейного макета (Initialize linear layout manager)
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        // Установка менеджера макета
+        recyclerView.setLayoutManager(linearLayoutManager);
+        // Инициализация adapter
+        sendFoodAdapter = new SendFoodAdapter(SendToFoodActivity.this, foodDataList);
+        // Set adapter
+        recyclerView.setAdapter(sendFoodAdapter);
 
         btScan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +57,19 @@ public class SendToFoodActivity extends AppCompatActivity {
                 scanCode();
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Для мгновенного обновления списка добавленных позиций:
+        // Очистка списка данных
+        foodDataList.clear();
+        // Заново данные из БД добавлются в список
+        foodDataList.addAll(database.foodDao().getAll());
+        // Уведомление после вставки данных (Notify when data is inserted)
+        sendFoodAdapter.notifyDataSetChanged();
     }
 
     private void scanCode() {
