@@ -1,6 +1,10 @@
 package ru.axout.floragraphica.presentation.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,5 +41,36 @@ public class FoodActivity extends AppCompatActivity {
         TulaRestAdapter tulaRestAdapter = new TulaRestAdapter(countPackList);
         // Set adapter
         recyclerView.setAdapter(tulaRestAdapter);
+    }
+
+    // Создание меню экшн бара
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Наполнение меню. Добавление элементов в акшн бар (Inflate the menu. This adds items to the action bar if it is present.)
+        getMenuInflater().inflate(R.menu.menu_place, menu);
+        return true;
+    }
+
+    // Обработка выпадающего меню в экшн баре
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        // Обработка нажатия кнопок выпадающего меню
+        switch (id) {
+//            case R.id.action_sendToFood:
+//                Intent intent1 = new Intent(FoodActivity.this, SendToFoodActivity.class);
+//                startActivity(intent1);
+//                break;
+//            case R.id.action_sendToVarsh:
+//                Intent intent2 = new Intent(FoodActivity.this, SendToVarshActivity.class);
+//                startActivity(intent2);
+//                break;
+            case R.id.action_sold:
+                Intent intent3 = new Intent(FoodActivity.this, SalesFoodActivity.class);
+                startActivity(intent3);
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

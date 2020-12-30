@@ -18,7 +18,7 @@
             android:title="Отправить на Варшавку"
             app:showAsAction="never"/>
     <item
-            android:id="@+id/action_selled"
+            android:id="@+id/action_sold"
             android:orderInCategory="100"
             android:title="Продать"
             app:showAsAction="never"/>

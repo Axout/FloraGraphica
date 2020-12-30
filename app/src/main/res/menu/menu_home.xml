@@ -3,8 +3,13 @@
       xmlns:app="http://schemas.android.com/apk/res-auto"
       tools:context=".presentation.activity.HomeActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_add_sort"
         android:orderInCategory="100"
         android:title="@string/action_settings"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_sold"
+        android:orderInCategory="100"
+        android:title="Реализация"
         app:showAsAction="never"/>
 </menu>

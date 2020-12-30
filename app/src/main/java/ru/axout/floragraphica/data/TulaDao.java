@@ -33,6 +33,9 @@ public interface TulaDao {
     @Query("SELECT * FROM table_tula WHERE ID = :sortID")
     TulaData getWhereSortID(int sortID);
 
+    @Query("SELECT * FROM table_tula WHERE ID = :sortID AND packageNumber = :packageNumber")
+    TulaData getWhereSortIDAndPackNum(int sortID, int packageNumber);
+
 //    // Обновление запросов
 //    @Query("UPDATE table_tula SET quantity = :sQuantity WHERE ID = :sID")
 //    void update(int sID, String sQuantity);

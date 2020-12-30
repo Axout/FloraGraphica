@@ -12,12 +12,14 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import ru.axout.floragraphica.CaptureAct;
 import ru.axout.floragraphica.R;
-import ru.axout.floragraphica.data.*;
+import ru.axout.floragraphica.data.RoomDB;
+import ru.axout.floragraphica.data.TulaData;
+import ru.axout.floragraphica.data.VarshData;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class SendToFoodActivity extends AppCompatActivity {
+public class SendToVarshActivity extends AppCompatActivity {
 
     RoomDB database;
     Toast toast;
@@ -81,19 +83,17 @@ public class SendToFoodActivity extends AppCompatActivity {
         tulaData = database.tulaDao().getWhereSortIDAndPackNum(sortID, packNumber);
         // Получение сорта из полученной строки
         sort = tulaData.getSort();
-
-//        if (!database.foodDao().checkBySortAndPackNumber(sortID, packNumber)) {
-        FoodData foodData = new FoodData();
-        foodData.setSortID(sortID);
-        foodData.setSort(sort);
-        foodData.setPackageNumber(packNumber);
-        foodData.setDateAdded(getFormatDate());
+        // Добавление в table_varsh
+        VarshData varshData = new VarshData();
+        varshData.setSortID(sortID);
+        varshData.setSort(sort);
+        varshData.setPackageNumber(packNumber);
+        varshData.setDateAdded(getFormatDate());
         // Вставка данных (картежа) в БД (Insert text in database)
-        database.foodDao().insert(foodData);
+        database.varshDao().insert(varshData);
 
-        // Удаляем из table_tula отправленную на ФудСити упаковку
+        // Удаление из table_tula отправленной на Варшавку упаковки
         database.tulaDao().delete(tulaData);
-//            database.tulaDao().deleteBySortIDAndPackNum(sortID, packNumber);
 
         showMessage("Отправлено");
     }
@@ -110,7 +110,7 @@ public class SendToFoodActivity extends AppCompatActivity {
         if (toast != null) {
             toast.cancel();
         }
-        toast = Toast.makeText(SendToFoodActivity.this, text, Toast.LENGTH_SHORT);
+        toast = Toast.makeText(SendToVarshActivity.this, text, Toast.LENGTH_SHORT);
         toast.show();
     }
 
@@ -118,7 +118,7 @@ public class SendToFoodActivity extends AppCompatActivity {
         if (toast != null) {
             toast.cancel();
         }
-        toast = Toast.makeText(SendToFoodActivity.this, text, Toast.LENGTH_LONG);
+        toast = Toast.makeText(SendToVarshActivity.this, text, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }

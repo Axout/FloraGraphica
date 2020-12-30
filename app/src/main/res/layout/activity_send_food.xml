@@ -8,7 +8,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16dp"
-        tools:context=".presentation.activity.SendToFoodActivity">
+        tools:context=".presentation.activity.SendToFoodActivity"
+        android:background="@color/colorPrimaryDark">
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_tula_manually"

@@ -9,10 +9,12 @@ import java.io.Serializable;
 
 import static androidx.room.ForeignKey.CASCADE;
 
-@Entity(tableName = "table_food",
+@Entity(tableName = "table_varsh",
         foreignKeys = @ForeignKey(entity = MainData.class, parentColumns = "ID", childColumns = "sortID",
                 onDelete = CASCADE))
-public class FoodData implements Serializable {
+public class VarshData implements Serializable {
+    // Создание первичного ключа, автоматическое
+    // @PrimaryKey(autoGenerate = true)
     @PrimaryKey(autoGenerate = true)
     private int ID;
 

@@ -12,12 +12,14 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import ru.axout.floragraphica.CaptureAct;
 import ru.axout.floragraphica.R;
-import ru.axout.floragraphica.data.*;
+import ru.axout.floragraphica.data.RoomDB;
+import ru.axout.floragraphica.data.SalesData;
+import ru.axout.floragraphica.data.VarshData;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class SendToFoodActivity extends AppCompatActivity {
+public class SalesVarshActivity extends AppCompatActivity {
 
     RoomDB database;
     Toast toast;
@@ -74,28 +76,26 @@ public class SendToFoodActivity extends AppCompatActivity {
         int cod = Integer.parseInt(scanResult);
         int sortID = cod / 100000;
         int packNumber = cod % 100000;
-        TulaData tulaData;
+        VarshData varshData;
         String sort;
 
-        // Получение строки из table_tula по sortID
-        tulaData = database.tulaDao().getWhereSortIDAndPackNum(sortID, packNumber);
+        // Получение строки из table_varsh по sortID
+        varshData = database.varshDao().getWhereSortIDAndPackNum(sortID, packNumber);
         // Получение сорта из полученной строки
-        sort = tulaData.getSort();
-
-//        if (!database.foodDao().checkBySortAndPackNumber(sortID, packNumber)) {
-        FoodData foodData = new FoodData();
-        foodData.setSortID(sortID);
-        foodData.setSort(sort);
-        foodData.setPackageNumber(packNumber);
-        foodData.setDateAdded(getFormatDate());
+        sort = varshData.getSort();
+        // Добавление в table_sales
+        SalesData salesData = new SalesData();
+        salesData.setSortID(sortID);
+        salesData.setSort(sort);
+        salesData.setPackageNumber(packNumber);
+        salesData.setDateAdded(getFormatDate());
         // Вставка данных (картежа) в БД (Insert text in database)
-        database.foodDao().insert(foodData);
+        database.salesDao().insert(salesData);
 
-        // Удаляем из table_tula отправленную на ФудСити упаковку
-        database.tulaDao().delete(tulaData);
-//            database.tulaDao().deleteBySortIDAndPackNum(sortID, packNumber);
+        // Удаление из table_varsh отправленной на Варшавку упаковки
+        database.varshDao().delete(varshData);
 
-        showMessage("Отправлено");
+        showMessage("Продано");
     }
 
     // Форматирование даты под следующий вид: "dd.MM.yyyy"
@@ -110,7 +110,7 @@ public class SendToFoodActivity extends AppCompatActivity {
         if (toast != null) {
             toast.cancel();
         }
-        toast = Toast.makeText(SendToFoodActivity.this, text, Toast.LENGTH_SHORT);
+        toast = Toast.makeText(SalesVarshActivity.this, text, Toast.LENGTH_SHORT);
         toast.show();
     }
 
@@ -118,7 +118,7 @@ public class SendToFoodActivity extends AppCompatActivity {
         if (toast != null) {
             toast.cancel();
         }
-        toast = Toast.makeText(SendToFoodActivity.this, text, Toast.LENGTH_LONG);
+        toast = Toast.makeText(SalesVarshActivity.this, text, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
