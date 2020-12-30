@@ -27,6 +27,6 @@ public interface SalesDao {
     @Query("SELECT sortID, sort, COUNT(*) AS countPack FROM table_sales GROUP BY sortID")
     List<CountPack> getCountPack();
 
-    @Query("SELECT * FROM table_sales WHERE ID = :sortID")
+    @Query("SELECT * FROM table_sales WHERE sortID = :sortID")
     TulaData getWhereSortID(int sortID);
 }
