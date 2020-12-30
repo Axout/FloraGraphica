@@ -12,7 +12,7 @@ import ru.axout.floragraphica.R;
  */
 public class MainActivity extends Activity {
 
-    private final int SPLASH_DELAY = 3000;
+    private final int SPLASH_DELAY = 500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

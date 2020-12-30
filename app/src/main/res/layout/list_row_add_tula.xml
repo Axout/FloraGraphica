@@ -16,15 +16,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:id="@+id/text_view_id"
-                android:textSize="14sp"
-                android:textColor="@color/colorWhite"/>
-
-        <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:id="@+id/text_view_sort"
+                android:id="@+id/tv_id_sort_tula"
                 android:textSize="14sp"
                 android:textColor="@color/colorWhite"/>
 
@@ -32,7 +24,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:id="@+id/text_view_color"
+                android:id="@+id/tv_pack_number_tula"
                 android:textSize="14sp"
                 android:textColor="@color/colorWhite"/>
 
@@ -40,9 +32,18 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:id="@+id/text_view_type"
+                android:id="@+id/tv_date_tula"
                 android:textSize="14sp"
                 android:textColor="@color/colorWhite"/>
+
+        <!--
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/text_view_quantity"
+                android:textSize="14sp"/>
+        -->
 
         <ImageView
                 android:layout_width="wrap_content"

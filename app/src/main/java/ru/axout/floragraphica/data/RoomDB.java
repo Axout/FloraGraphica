@@ -5,8 +5,15 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-// Добавляю объекты БД
-@Database(entities = {MainData.class, TulaData.class},version = 1,exportSchema = false)
+/*
+Объявление БД
+Аннотацией Database помечаем основной класс по работе с базой данных.
+Этот класс должен быть абстрактным и наследовать RoomDatabase.
+В параметрах аннотации Database указываем, какие Entity будут использоваться, и версию базы.
+Для каждого Entity класса из списка entities будет создана таблица.
+ */
+@Database(entities = {MainData.class, TulaData.class, FoodData.class, VarshData.class, SalesData.class}
+,version = 1,exportSchema = false)
 public abstract class RoomDB extends RoomDatabase {
     // Создаю экземпляр БД
     private static RoomDB database;
@@ -25,8 +32,11 @@ public abstract class RoomDB extends RoomDatabase {
         return database;
     }
 
-    //
+    // В Database классе описываем абстрактные методы для получения Dao объектов, которые будут использоваться.
     public abstract MainDao mainDao();
     public abstract TulaDao tulaDao();
+    public abstract FoodDao foodDao();
+    public abstract VarshDao varshDao();
+    public abstract SalesDao salesDao();
 }
 
