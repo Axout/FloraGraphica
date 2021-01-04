@@ -8,8 +8,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16dp"
-        tools:context=".presentation.activity.AddDataActivity"
-        android:background="@color/colorPrimaryDark">
+        tools:context=".presentation.activity.AddDataActivity">
 
     <!-- Код (ID) -->
     <LinearLayout
@@ -22,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewID"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorPrimaryDark"
                 android:padding="5dp"
                 android:layout_weight="1"
                 android:textSize="20dp"/>
@@ -49,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewType"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorPrimaryDark"
                 android:padding="5dp"
                 android:layout_weight="2"
                 android:textSize="20dp"/>
@@ -59,8 +58,7 @@
                 android:id="@+id/spTypes"
                 android:spinnerMode="dialog"
                 android:padding="20dp"
-                android:layout_weight="1"
-        android:outlineAmbientShadowColor="@color/colorWhite"/>
+                android:layout_weight="1"/>
     </LinearLayout>
 
     <!-- Цвет -->
@@ -75,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewColor"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorPrimaryDark"
                 android:padding="5dp"
                 android:layout_weight="2"
                 android:textSize="20dp"/>
@@ -85,8 +83,7 @@
                 android:id="@+id/spColors"
                 android:spinnerMode="dialog"
                 android:padding="20dp"
-                android:layout_weight="1"
-        android:outlineSpotShadowColor="@color/colorWhite"/>
+                android:layout_weight="1"/>
     </LinearLayout>
 
     <!-- Сорт -->
@@ -101,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewSort"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorPrimaryDark"
                 android:padding="5dp"
                 android:layout_weight="2"
                 android:textSize="20dp"/>

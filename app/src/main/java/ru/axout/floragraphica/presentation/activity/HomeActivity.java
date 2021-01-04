@@ -10,20 +10,42 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import ru.axout.floragraphica.R;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
+public class HomeActivity extends AppCompatActivity {
+
+    ImageView imTula, imFood, imVarsh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        ImageView imTula = findViewById(R.id.im_Tula);
-        ImageView imFood = findViewById(R.id.im_Food);
-        ImageView imVarsh = findViewById(R.id.im_Varsh);
+        imTula = findViewById(R.id.im_Tula);
+        imFood = findViewById(R.id.im_Food);
+        imVarsh = findViewById(R.id.im_Varsh);
 
-        imTula.setOnClickListener(this);
-        imFood.setOnClickListener(this);
-        imVarsh.setOnClickListener(this);
+        imTula.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, TulaActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        imFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, FoodActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        imVarsh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, VarshActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     // Создание меню экшн бара
@@ -39,32 +61,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         // Обработка нажатия "Добавить сорт"
-        if (id == R.id.action_add_sort) {
+        if (id == R.id.action_settings) {
             Intent intent = new Intent(HomeActivity.this, AddDataActivity.class);
             startActivity(intent);
         }
-        if (id == R.id.action_sold) {
-            Intent intent = new Intent(HomeActivity.this, SoldActivity.class);
-            startActivity(intent);
-        }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.im_Tula:
-                Intent intent = new Intent(HomeActivity.this, TulaActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.im_Food:
-                Intent intent1 = new Intent(HomeActivity.this, FoodActivity.class);
-                startActivity(intent1);
-                break;
-            case R.id.im_Varsh:
-                Intent intent2 = new Intent(HomeActivity.this, VarshActivity.class);
-                startActivity(intent2);
-                break;
-        }
     }
 }

@@ -7,29 +7,28 @@ import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
-import static androidx.room.ForeignKey.CASCADE;
-//onDelete = CASCADE - позволяет при удалении родительского ключа, удалять связанные с ним дочерние ключи.
-
 @Entity(tableName = "table_tula",
-        foreignKeys = @ForeignKey(entity = MainData.class, parentColumns = "ID", childColumns = "sortID",
-                onDelete = CASCADE))
+        foreignKeys = @ForeignKey(entity = MainData.class, parentColumns = "ID", childColumns = "tulip_ID"))
 public class TulaData implements Serializable {
     // Создание первичного ключа, автоматическое
      // @PrimaryKey(autoGenerate = true)
     @PrimaryKey(autoGenerate = true)
     private int ID;
 
-    @ColumnInfo(name = "sortID")
-    private int sortID;
+    @ColumnInfo(name = "tulip_ID")
+    private int tulip_ID;
+
+    @ColumnInfo(name = "type")
+    private String type;
 
     @ColumnInfo(name = "sort")
     private String sort;
 
-    @ColumnInfo(name = "packageNumber")
-    private int packageNumber;
+    @ColumnInfo(name = "color")
+    private String color;
 
-    @ColumnInfo(name = "dateAdded")
-    private String dateAdded;
+    @ColumnInfo(name = "quantity")
+    private int quantity;
 
     public int getID() {
         return ID;
@@ -39,12 +38,20 @@ public class TulaData implements Serializable {
         this.ID = ID;
     }
 
-    public int getSortID() {
-        return sortID;
+    public int getTulip_ID() {
+        return tulip_ID;
     }
 
-    public void setSortID(int sortID) {
-        this.sortID = sortID;
+    public void setTulip_ID(int tulip_ID) {
+        this.tulip_ID = tulip_ID;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getSort() {
@@ -55,19 +62,19 @@ public class TulaData implements Serializable {
         this.sort = sort;
     }
 
-    public int getPackageNumber() {
-        return packageNumber;
+    public String getColor() {
+        return color;
     }
 
-    public void setPackageNumber(int packageNumber) {
-        this.packageNumber = packageNumber;
+    public void setColor(String color) {
+        this.color = color;
     }
 
-    public String getDateAdded() {
-        return dateAdded;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setDateAdded(String dateAdded) {
-        this.dateAdded = dateAdded;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
