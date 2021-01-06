@@ -8,21 +8,30 @@ import android.widget.Button;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import ru.axout.floragraphica.CaptureAct;
 import ru.axout.floragraphica.R;
+import ru.axout.floragraphica.data.FoodData;
 import ru.axout.floragraphica.data.RoomDB;
 import ru.axout.floragraphica.data.TulaData;
 import ru.axout.floragraphica.data.VarshData;
+import ru.axout.floragraphica.presentation.adapter.SendFoodAdapter;
+import ru.axout.floragraphica.presentation.adapter.SendVarshAdapter;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class SendToVarshActivity extends AppCompatActivity {
 
+    List<VarshData> varshDataList = new ArrayList<>();
     RoomDB database;
     Toast toast;
+    SendVarshAdapter sendVarshAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,6 +41,19 @@ public class SendToVarshActivity extends AppCompatActivity {
         // Initialize BD
         database = RoomDB.getInstance(this);
         Button btScan = findViewById(R.id.bt_scan_to_food);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view_tula_manually);
+
+        // Вывод данных пользователю:
+        // Хранение данных БД в data list (Store database value in data list)
+        varshDataList = database.varshDao().getAll();
+        // Инициализация менеджера линейного макета (Initialize linear layout manager)
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        // Установка менеджера макета
+        recyclerView.setLayoutManager(linearLayoutManager);
+        // Инициализация adapter
+        sendVarshAdapter = new SendVarshAdapter(SendToVarshActivity.this, varshDataList);
+        // Set adapter
+        recyclerView.setAdapter(sendVarshAdapter);
 
         btScan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +61,19 @@ public class SendToVarshActivity extends AppCompatActivity {
                 scanCode();
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Для мгновенного обновления списка добавленных позиций:
+        // Очистка списка данных
+        varshDataList.clear();
+        // Заново данные из БД добавлются в список
+        varshDataList.addAll(database.varshDao().getAll());
+        // Уведомление после вставки данных (Notify when data is inserted)
+        sendVarshAdapter.notifyDataSetChanged();
     }
 
     private void scanCode() {

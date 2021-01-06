@@ -30,10 +30,10 @@ public interface TulaDao {
     @Query("DELETE FROM table_tula WHERE sort = :sortID AND packageNumber = :packageNumber")
     void deleteBySortIDAndPackNum(int sortID, int packageNumber);
 
-    @Query("SELECT * FROM table_tula WHERE ID = :sortID")
+    @Query("SELECT * FROM table_tula WHERE sortID = :sortID")
     TulaData getWhereSortID(int sortID);
 
-    @Query("SELECT * FROM table_tula WHERE ID = :sortID AND packageNumber = :packageNumber")
+    @Query("SELECT * FROM table_tula WHERE sortID = :sortID AND packageNumber = :packageNumber")
     TulaData getWhereSortIDAndPackNum(int sortID, int packageNumber);
 
 //    // Обновление запросов
