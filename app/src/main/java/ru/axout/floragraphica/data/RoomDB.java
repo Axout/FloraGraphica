@@ -18,7 +18,7 @@ public abstract class RoomDB extends RoomDatabase {
     // Создаю экземпляр БД
     private static RoomDB database;
     // Имя БД
-    private static String DATABASE_NAME = "database";
+    final private static String DATABASE_NAME = "database";
 
     public synchronized static RoomDB getInstance(Context context) {
         // проверка
