@@ -14,7 +14,7 @@
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_tula_manually"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="1"
                 tools:listitem="@layout/list_row_add_tula"/>
 
@@ -22,5 +22,5 @@
                 android:id="@+id/bt_scan_to_food"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Сканировать"/>
+                android:text="@string/scan"/>
 </LinearLayout>

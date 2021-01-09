@@ -7,7 +7,24 @@
     -->
     <string name="hello_world">Hello World!</string>
     <string name="description">Фон splashscreen</string>
-    <string name="action_settings">Добавить сорт</string>
+    <string name="add_sort">Добавить сорт</string>
+    <string name="add">Добавить</string>
+    <string name="send_to_food">Отправить на ФудСити</string>
+    <string name="send_to_varsh">Отправить на Варшавку</string>
+    <string name="sell">Продать</string>
+    <string name="realization">Реализация</string>
+    <string name="foto">Фото</string>
+    <string name="sort">СОРТ</string>
+    <string name="quantity">КОЛ-ВО</string>
+    <string name="scan">Сканировать</string>
+    <string name="sort_name">Название сорта</string>
+    <string name="package_number">Номер упаковки</string>
+    <string name="enter_number">Введите номер</string>
+    <string name="cod">Код</string>
+    <string name="enter_cod">Введите код</string>
+    <string name="type">Тип</string>
+    <string name="color">Цвет</string>
+    <string name="delete_all">Удалить всё</string>
 
     <string-array name="types">
         <item>Обычные</item>
