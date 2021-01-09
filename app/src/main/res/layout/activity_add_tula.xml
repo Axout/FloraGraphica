@@ -19,7 +19,7 @@ android:background="@color/colorPrimaryDark">
 
         <TextView
             android:text="@string/sort_name"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorWhite"
             android:padding="5dp"
@@ -28,11 +28,11 @@ android:background="@color/colorPrimaryDark">
 
         <Spinner
             android:id="@+id/spSorts_tula"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:spinnerMode="dialog"
             android:padding="20dp"
-            android:layout_weight="1"/>
+            android:layout_weight="5"/>
     </LinearLayout>
 
     <!-- Номер упаковки (packNum) -->
@@ -43,7 +43,7 @@ android:background="@color/colorPrimaryDark">
 
         <TextView
             android:text="@string/package_number"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorWhite"
             android:padding="5dp"
@@ -52,10 +52,10 @@ android:background="@color/colorPrimaryDark">
 
         <EditText
                 android:id="@+id/etPackNumber_tula"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:layout_weight="1"
+                android:layout_weight="1.6"
                 android:background="@android:drawable/editbox_background"
                 android:hint="@string/enter_number"
                 android:inputType="number"
