@@ -7,6 +7,6 @@
     <item
             android:id="@+id/action_sold"
             android:orderInCategory="100"
-            android:title="Продать"
+            android:title="@string/sell"
             app:showAsAction="never"/>
 </menu>

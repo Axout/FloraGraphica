@@ -22,7 +22,6 @@ public class AddDataActivity extends AppCompatActivity {
     // Список с данными (картежи)
     // БД создаётся в MainData
     List<MainData> dataList = new ArrayList<>();
-    LinearLayoutManager linearLayoutManager;
     RoomDB database;
     MainAdapter adapter;
 
@@ -51,7 +50,7 @@ public class AddDataActivity extends AppCompatActivity {
         dataList = database.mainDao().getAll();
 
         // Инициализация менеджера линейного макета (Initialize linear layout manager)
-        linearLayoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         // Установка менеджера макета
         recyclerView.setLayoutManager(linearLayoutManager);
         // Инициализация adapter

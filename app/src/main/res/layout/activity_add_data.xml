@@ -18,23 +18,24 @@
             android:orientation="horizontal">
 
         <TextView
-                android:text="Код"
-                android:layout_width="match_parent"
+                android:text="@string/cod"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewID"
                 android:textColor="@color/colorWhite"
                 android:padding="5dp"
-                android:layout_weight="1"
-                android:textSize="20dp"/>
+                android:layout_weight="1.6"
+                android:textSize="20sp"/>
         <EditText
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/editTextID"
                 android:padding="10dp"
                 android:layout_weight="1"
                 android:background="@android:drawable/editbox_background"
-                android:hint="Введите код"
-                android:inputType="number"/>
+                android:hint="@string/enter_cod"
+                android:inputType="number"
+                android:autofillHints="cod"/>
     </LinearLayout>
 
     <!-- Тип -->
@@ -45,21 +46,21 @@
             android:layout_marginTop="5dp">
 
         <TextView
-                android:text="Тип"
-                android:layout_width="match_parent"
+                android:text="@string/type"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewType"
                 android:textColor="@color/colorWhite"
                 android:padding="5dp"
-                android:layout_weight="2"
-                android:textSize="20dp"/>
+                android:layout_weight="1"
+                android:textSize="20sp"/>
         <Spinner
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/spTypes"
                 android:spinnerMode="dialog"
                 android:padding="20dp"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
         android:outlineAmbientShadowColor="@color/colorWhite"/>
     </LinearLayout>
 
@@ -71,21 +72,21 @@
             android:layout_marginTop="5dp">
 
         <TextView
-                android:text="Цвет"
-                android:layout_width="match_parent"
+                android:text="@string/color"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewColor"
                 android:textColor="@color/colorWhite"
                 android:padding="5dp"
-                android:layout_weight="2"
-                android:textSize="20dp"/>
+                android:layout_weight="1"
+                android:textSize="20sp"/>
         <Spinner
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/spColors"
                 android:spinnerMode="dialog"
                 android:padding="20dp"
-                android:layout_weight="1"
+                android:layout_weight="1.3"
         android:outlineSpotShadowColor="@color/colorWhite"/>
     </LinearLayout>
 
@@ -97,21 +98,21 @@
             android:layout_marginTop="5dp">
 
         <TextView
-                android:text="Сорт"
-                android:layout_width="match_parent"
+                android:text="@string/sort"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewSort"
                 android:textColor="@color/colorWhite"
                 android:padding="5dp"
-                android:layout_weight="2"
-                android:textSize="20dp"/>
+                android:layout_weight="1"
+                android:textSize="20sp"/>
         <Spinner
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/spSorts"
                 android:spinnerMode="dialog"
                 android:padding="20dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1.3"/>
     </LinearLayout>
 
     <!-- Макет кнопок ADD и RESET -->
@@ -125,14 +126,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/bt_add"
-                android:text="Добавить"/>
+                android:text="@string/add"
+                tools:ignore="ButtonStyle"/>
 
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/bt_reset"
-                android:text="Удалить всё"/>
+                android:text="@string/delete_all"
+                tools:ignore="ButtonStyle"/>
 
     </LinearLayout>
 

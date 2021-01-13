@@ -18,21 +18,21 @@ android:background="@color/colorPrimaryDark">
         android:orientation="horizontal">
 
         <TextView
-            android:text="Название сорта"
-            android:layout_width="match_parent"
+            android:text="@string/sort_name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorWhite"
             android:padding="5dp"
             android:layout_weight="1"
-            android:textSize="20dp"/>
+            android:textSize="20sp"/>
 
         <Spinner
             android:id="@+id/spSorts_tula"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:spinnerMode="dialog"
             android:padding="20dp"
-            android:layout_weight="1"/>
+            android:layout_weight="5"/>
     </LinearLayout>
 
     <!-- Номер упаковки (packNum) -->
@@ -42,23 +42,24 @@ android:background="@color/colorPrimaryDark">
         android:orientation="horizontal">
 
         <TextView
-            android:text="Номер упаковки"
-            android:layout_width="match_parent"
+            android:text="@string/package_number"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorWhite"
             android:padding="5dp"
             android:layout_weight="1"
-            android:textSize="20dp"/>
+            android:textSize="20sp"/>
 
         <EditText
-            android:id="@+id/etPackNumber_tula"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:background="@android:drawable/editbox_background"
-            android:hint="Введите номер"
-            android:inputType="number"/>
+                android:id="@+id/etPackNumber_tula"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_weight="1.6"
+                android:background="@android:drawable/editbox_background"
+                android:hint="@string/enter_number"
+                android:inputType="number"
+                android:autofillHints="package_number"/>
     </LinearLayout>
 
     <!-- Макет кнопки ADD -->
@@ -69,10 +70,10 @@ android:background="@color/colorPrimaryDark">
 
         <Button
             android:id="@+id/bt_add_tula"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Добавить"/>
+            android:text="@string/add"/>
     </LinearLayout>
 
     <!-- Макет кнопки Сканировать -->
@@ -83,10 +84,10 @@ android:background="@color/colorPrimaryDark">
 
         <Button
                 android:id="@+id/bt_scan_tula"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Сканировать"/>
+                android:text="@string/scan"/>
     </LinearLayout>
 
     <!-- RecyclerView предназначен для оптимизации работы со списками -->
